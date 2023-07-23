@@ -29,6 +29,7 @@ class PeriodsList extends StatelessWidget {
                   period.name,
                   style: theme.textTheme.titleMedium!.copyWith(
                     fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.secondary,
                   ),
                 ),
                 _gap(),

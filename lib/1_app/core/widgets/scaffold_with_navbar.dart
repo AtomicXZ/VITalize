@@ -15,12 +15,9 @@ class ScaffoldWithNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 12),
         child: allNavBarConfigs[index].child,
       )),
       bottomNavigationBar: NavigationBar(

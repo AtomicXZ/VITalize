@@ -1,12 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
 import 'package:vtop_app/1_app/pages/profile_page/cubit/profile_page_cubit.dart';
 
 List<String> fields = [
-  'Application Number',
   'Student Name',
   'Register Number',
+  'Application Number',
   'Program',
   'Branch',
   'School'
@@ -36,8 +38,24 @@ class ProfilePage extends StatelessWidget {
         } else if (state is ProfilePageLoaded) {
           return ListView(
             children: [
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(75),
+                  child: Image.memory(
+                    base64.decode(state.profile['image']!),
+                    fit: BoxFit.fill,
+                    height: 150,
+                    width: 150,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
               for (var field in fields)
-                _buildListItem(field, state.profile[field]!)
+                _buildListItem(
+                  field,
+                  state.profile[field]!,
+                  Theme.of(context).colorScheme.secondary,
+                )
             ],
           );
         } else {
@@ -45,7 +63,7 @@ class ProfilePage extends StatelessWidget {
         }
       });
 
-  Widget _buildListItem(String label, String value) {
+  Widget _buildListItem(String label, String value, Color primaryColor) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Column(
@@ -53,9 +71,10 @@ class ProfilePage extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
+              color: primaryColor,
             ),
           ),
           const SizedBox(height: 4),

@@ -11,7 +11,7 @@ class ProfilePageCubit extends Cubit<ProfilePageState> {
   ProfilePageCubit() : super(ProfilePageInitial());
 
   void loadProfile() async {
-    Map<dynamic, String> profile = await repository.getProfileFromApiAndCache;
+    Map<dynamic, String> profile = await repository.getProfileFromBox;
     emit(ProfilePageLoaded(profile));
   }
 }
