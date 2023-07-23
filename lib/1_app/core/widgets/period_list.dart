@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../0_data/models/period.dart';
+import '../../../0_data/models/period.dart';
 
 class PeriodsList extends StatelessWidget {
   final List<Period> periods;
@@ -15,6 +15,7 @@ class PeriodsList extends StatelessWidget {
       itemCount: periods.length,
       itemBuilder: (context, index) {
         final period = periods[index];
+        final colorScheme = Theme.of(context).colorScheme;
 
         return Card(
           elevation: 2,
@@ -38,7 +39,11 @@ class PeriodsList extends StatelessWidget {
                 _gap(),
                 Row(
                   children: [
-                    const Icon(Icons.location_on_rounded, size: 18),
+                    Icon(
+                      Icons.location_on_rounded,
+                      size: 18,
+                      color: colorScheme.onSurface,
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       period.location,
@@ -50,7 +55,11 @@ class PeriodsList extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Icon(Icons.alarm, size: 18),
+                    Icon(
+                      Icons.alarm,
+                      size: 18,
+                      color: colorScheme.onSurface,
+                    ),
                     const SizedBox(width: 4),
                     Text(
                       '${period.startTime} - ${period.endTime}',

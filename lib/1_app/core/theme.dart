@@ -1,81 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+const seedColor = Colors.blue;
+
 final kColorSchemeLight = ColorScheme.fromSeed(
-  seedColor: Colors.deepPurpleAccent,
+  seedColor: seedColor,
   brightness: Brightness.light,
 );
 
 final kColorSchemeDark = ColorScheme.fromSeed(
-  seedColor: Colors.deepPurpleAccent,
+  seedColor: seedColor,
   brightness: Brightness.dark,
 );
 
-final textTheme = GoogleFonts.openSansTextTheme().copyWith(
-  displayLarge: const TextStyle(
-    fontSize: 34.0,
-    color: Colors.black,
-  ),
-  displayMedium: const TextStyle(
-    fontSize: 24.0,
-    color: Colors.black,
-  ),
-  displaySmall: const TextStyle(
-    fontSize: 20.0,
-    color: Colors.black,
-  ),
-  bodyLarge: const TextStyle(
-    fontSize: 16.0,
-    color: Colors.black,
-  ),
-  bodyMedium: const TextStyle(
-    fontSize: 14.0,
-    color: Colors.black,
-  ),
-  bodySmall: const TextStyle(
-    fontSize: 12.0,
-    color: Colors.black,
-  ),
-  titleMedium: const TextStyle(
-    fontSize: 20.0,
-    color: Colors.black,
-  ),
-  titleSmall: const TextStyle(
-    fontSize: 18.0,
-    color: Colors.black,
-  ),
-  labelLarge: const TextStyle(
-    fontSize: 16.0,
-    color: Colors.black,
-  ),
-  labelSmall: const TextStyle(
-    fontSize: 12.0,
-    color: Colors.black,
-  ),
-);
+final customLightBackgroundColor = Color.lerp(
+    kColorSchemeLight.primaryContainer, kColorSchemeLight.background, 0.4);
+
+final customDarkBackgroundColor = Color.lerp(
+    kColorSchemeDark.background, kColorSchemeDark.primaryContainer, 0.4);
+
+TextTheme getTextTheme(Color textColor) {
+  return GoogleFonts.openSansTextTheme().apply(
+    bodyColor: textColor,
+    displayColor: textColor,
+    decorationColor: textColor,
+  );
+}
+
+TextTheme lightTextTheme = getTextTheme(Colors.black);
+TextTheme darkTextTheme = getTextTheme(Colors.white);
 
 final lightTheme = ThemeData().copyWith(
   useMaterial3: true,
   colorScheme: kColorSchemeLight,
-  scaffoldBackgroundColor: kColorSchemeLight.background,
+  scaffoldBackgroundColor: customLightBackgroundColor,
   appBarTheme: AppBarTheme(
-    titleTextStyle: textTheme.displayMedium!.copyWith(
-      color: Colors.black,
+    titleTextStyle: lightTextTheme.displayLarge!.copyWith(
+      fontSize: 24,
+      fontWeight: FontWeight.w500,
     ),
     elevation: 0,
+    backgroundColor: customLightBackgroundColor,
+    scrolledUnderElevation: 0,
   ),
-  textTheme: textTheme,
+  textTheme: lightTextTheme,
 );
 
 final darkTheme = ThemeData().copyWith(
   useMaterial3: true,
   colorScheme: kColorSchemeDark,
-  scaffoldBackgroundColor: kColorSchemeDark.background,
+  scaffoldBackgroundColor: customDarkBackgroundColor,
   appBarTheme: AppBarTheme(
-    titleTextStyle: GoogleFonts.openSans().copyWith(
-      color: Colors.white,
-      fontSize: 22,
+    titleTextStyle: darkTextTheme.displayLarge!.copyWith(
+      fontSize: 24,
+      fontWeight: FontWeight.w500,
     ),
+    elevation: 0,
+    backgroundColor: customDarkBackgroundColor,
+    scrolledUnderElevation: 0,
   ),
-  textTheme: textTheme,
+  textTheme: darkTextTheme,
 );

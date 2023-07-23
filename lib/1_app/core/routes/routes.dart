@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
-import 'package:vtop_app/1_app/core/widgets/scaffold_with_navbar.dart';
+import 'go_route_config.dart';
+import '../widgets/scaffold_with_navbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -12,8 +13,17 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 
 const _root = '/home';
 
+String get initialLocation {
+  Box<String> userBox = Hive.box('userBox');
+  if (userBox.get('isFirstLaunch') != 'false') {
+    return loginPageConfig.name;
+  } else {
+    return homePageConfig.name;
+  }
+}
+
 final routes = GoRouter(
-  initialLocation: '$_root/${homePageConfig.name}',
+  initialLocation: '$_root/$initialLocation',
   navigatorKey: _rootNavigatorKey,
   routes: [
     ShellRoute(
@@ -55,6 +65,6 @@ final routes = GoRouter(
       name: loginPageConfig.name,
       path: '$_root/${loginPageConfig.name}',
       builder: (context, state) => loginPageConfig.child,
-    )
+    ),
   ],
 );

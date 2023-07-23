@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:vtop_app/1_app/core/routes/routes.dart';
-import 'package:vtop_app/1_app/core/theme.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+import '0_data/models/period.dart';
+import '1_app/core/routes/routes.dart';
+import '1_app/core/theme.dart';
+import '1_app/core/utils/cache_all_data.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox<String>('userBox');
+  Hive.registerAdapter(PeriodAdapter());
+  cacheAllData();
   runApp(const MyApp());
 }
 

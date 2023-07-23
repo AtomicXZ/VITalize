@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:vtop_app/1_app/pages/attendance_page/attendance_page.dart';
-import 'package:vtop_app/1_app/pages/home_page/pages/homepage.dart';
+import 'package:vtop_app/1_app/pages/home_page/homepage.dart';
 import 'package:vtop_app/1_app/pages/login_page/login_page.dart';
 import 'package:vtop_app/1_app/pages/marks_page/marks_page.dart';
 import 'package:vtop_app/1_app/pages/profile_page/profile_page.dart';
 
-import '../../pages/home_page/pages/time_table/timetable_page.dart';
+import '../../pages/time_table/timetable_page.dart';
 
 class GoRouterConfig {
   final IconData? icon;
@@ -30,13 +30,13 @@ final List<GoRouterConfig> allNavBarConfigs = [
 
 final loginPageConfig = GoRouterConfig(
   name: 'Login',
-  child: LoginPage(),
+  child: const LoginPage(),
 );
 final homePageConfig = GoRouterConfig(
   icon: Icons.home_outlined,
   selectedIcon: Icons.home_rounded,
   name: 'Home',
-  child: const HomePage(),
+  child: const HomePageProvider(),
 );
 final attendancePageConfig = GoRouterConfig(
   icon: Icons.calendar_today_outlined,
@@ -54,7 +54,7 @@ final profilePageConfig = GoRouterConfig(
   icon: Icons.person_outline_rounded,
   selectedIcon: Icons.person_rounded,
   name: 'Profile',
-  child: const ProfilePage(),
+  child: const ProfilePageProvider(),
 );
 final timetablePageConfig = GoRouterConfig(
   name: 'Timetable',

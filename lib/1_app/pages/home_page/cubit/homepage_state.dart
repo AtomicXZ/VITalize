@@ -1,6 +1,16 @@
 part of 'homepage_cubit.dart';
 
 @immutable
-abstract class HomepageState {}
+abstract class HomePageState {}
 
-class HomepageInitial extends HomepageState {}
+class HomePageInitial extends HomePageState {}
+
+class HomePageLoading extends HomePageState {}
+
+class HomePagePeriods extends HomePageState {
+  final List<Period> periods;
+
+  HomePagePeriods(this.periods);
+}
+
+class HomePageHoliday extends HomePageState {}

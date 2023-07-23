@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class LoginPage extends StatelessWidget {
+import '../../../0_data/utils/verify_creds.dart';
+import '../../core/routes/go_route_config.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
-  LoginPage({super.key});
+  late String _username;
+  late String _password;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +56,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 _gap(),
                 TextFormField(
+                  onSaved: (newValue) => _username = newValue ?? '',
                   decoration: InputDecoration(
                     labelText: 'Reg. ID',
                     hintText: 'Enter your Reg. ID',
@@ -54,6 +68,7 @@ class LoginPage extends StatelessWidget {
                 ),
                 _gap(),
                 TextFormField(
+                  onSaved: (newValue) => _password = newValue ?? '',
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -68,20 +83,34 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   width: 125,
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.all(10.0),
-                        child: Text(
-                          'Sign in',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.bold),
-                        ),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        'Sign in',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {}),
+                    ),
+                    onPressed: () async {
+                      _formKey.currentState!.save();
+                      if (await isValid(_username, _password)) {
+                        Box<String> userBox = Hive.box('userBox');
+                        userBox.putAll({
+                          'username': _username,
+                          'password': _password,
+                          'isFirstLaunch': 'false',
+                        });
+                        context.goNamed(homePageConfig.name);
+                      } else {
+                        _showInvalidCredentialsPopup(context);
+                      }
+                    },
+                  ),
                 ),
               ],
             ),
@@ -92,4 +121,22 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _gap() => const SizedBox(height: 16);
+
+  void _showInvalidCredentialsPopup(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Invalid Credentials'),
+        content: const Text('The username or password is incorrect.'),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 }

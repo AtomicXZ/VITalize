@@ -1,9 +1,20 @@
-class Period {
+import 'package:hive_flutter/hive_flutter.dart';
+
+part 'period.g.dart';
+
+@HiveType(typeId: 0)
+class Period extends HiveObject {
+  @HiveField(0)
   final String name;
+  @HiveField(1)
   final String code;
+  @HiveField(2)
   final String slot;
+  @HiveField(3)
   final String location;
+  @HiveField(4)
   final String startTime;
+  @HiveField(5)
   final String endTime;
 
   Period({

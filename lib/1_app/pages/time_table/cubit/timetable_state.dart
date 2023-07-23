@@ -7,8 +7,10 @@ class TimetableInitial extends TimetableState {}
 
 class TimetableLoading extends TimetableState {}
 
-class TimetableLoaded extends TimetableState {
+class TimetablePeriods extends TimetableState {
   final List<Period> periods;
 
-  TimetableLoaded(this.periods);
+  TimetablePeriods(this.periods);
 }
+
+class TimetableHoliday extends TimetableState {}
