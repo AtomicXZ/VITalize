@@ -28,7 +28,7 @@ class Period extends HiveObject {
 
   factory Period.fromMap(Map<String, dynamic> map) {
     return Period(
-      name: map['name'],
+      name: map['courseName'],
       code: map['code'],
       slot: map['slot'],
       location: map['location'],

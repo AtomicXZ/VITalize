@@ -5,12 +5,13 @@ class Holiday extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Center(
           child: Text(
             'No classes today!',
+            style: const TextStyle().copyWith(fontSize: 18),
           ),
         ),
       ],

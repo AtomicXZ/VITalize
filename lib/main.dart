@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vtop_app/0_data/models/attendance.dart';
+import 'package:vtop_app/1_app/core/utils/is_first_launch.dart';
 
 import '0_data/models/period.dart';
 import '1_app/core/routes/routes.dart';
@@ -11,7 +13,10 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox<String>('userBox');
   Hive.registerAdapter(PeriodAdapter());
-  cacheAllData();
+  Hive.registerAdapter(AttendanceAdapter());
+  if (!isFirstLaunch) {
+    await cacheAllData();
+  }
   runApp(const MyApp());
 }
 

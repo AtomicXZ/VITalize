@@ -42,7 +42,7 @@ final attendancePageConfig = GoRouterConfig(
   icon: Icons.calendar_today_outlined,
   selectedIcon: Icons.calendar_today_rounded,
   name: 'Attendance',
-  child: const AttendancePage(),
+  child: const AttendancePageProvider(),
 );
 final marksPageConfig = GoRouterConfig(
   icon: Icons.calculate_outlined,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vtop_app/1_app/core/utils/is_first_launch.dart';
 
 import 'go_route_config.dart';
 import '../widgets/scaffold_with_navbar.dart';
@@ -14,8 +14,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 const _root = '/home';
 
 String get initialLocation {
-  Box<String> userBox = Hive.box('userBox');
-  if (userBox.get('isFirstLaunch') != 'false') {
+  if (isFirstLaunch) {
     return loginPageConfig.name;
   } else {
     return homePageConfig.name;

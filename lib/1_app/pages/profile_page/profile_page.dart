@@ -7,7 +7,7 @@ import 'package:vtop_app/1_app/pages/profile_page/cubit/profile_page_cubit.dart'
 
 List<String> fields = [
   'Student Name',
-  'Register Number',
+  'VIT Registration Number',
   'Application Number',
   'Program',
   'Branch',
