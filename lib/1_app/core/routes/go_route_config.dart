@@ -30,7 +30,7 @@ final List<GoRouterConfig> allNavBarConfigs = [
 
 final loginPageConfig = GoRouterConfig(
   name: 'Login',
-  child: const LoginPage(),
+  child: const LoginPageProvider(),
 );
 final homePageConfig = GoRouterConfig(
   icon: Icons.home_outlined,

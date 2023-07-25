@@ -2,6 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
+import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
 import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
 import 'package:vtop_app/1_app/pages/profile_page/cubit/profile_page_cubit.dart';
 
@@ -55,7 +58,15 @@ class ProfilePage extends StatelessWidget {
                   field,
                   state.profile[field]!,
                   Theme.of(context).colorScheme.secondary,
-                )
+                ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () {
+                  emptyAllBoxes();
+                  context.goNamed(loginPageConfig.name);
+                },
+                child: const Text('Logout'),
+              ),
             ],
           );
         } else {
