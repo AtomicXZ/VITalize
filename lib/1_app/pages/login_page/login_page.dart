@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    'Welcome to VTOP-AP',
+                    'Welcome to VITalize',
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
