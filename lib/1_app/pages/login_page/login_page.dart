@@ -35,9 +35,10 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(
+                Icon(
                   Icons.school,
                   size: 100,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
                 _gap(),
                 Padding(
@@ -61,6 +62,9 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     labelText: 'Reg. ID',
                     hintText: 'Enter your Reg. ID',
+                    hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                     prefixIcon: const Icon(Icons.person),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -74,6 +78,9 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     labelText: 'Password',
                     hintText: 'Enter your password',
+                    hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                     prefixIcon: const Icon(Icons.lock_outline_rounded),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
@@ -85,6 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                   width: 125,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                          Theme.of(context).colorScheme.onSecondary,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
@@ -138,6 +147,7 @@ class _LoginPageState extends State<LoginPage> {
             child: const Text('OK'),
           ),
         ],
+        backgroundColor: Theme.of(context).colorScheme.background,
       ),
     );
   }

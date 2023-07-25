@@ -9,7 +9,7 @@ class HiveTimetableRepository {
   String timetableBoxName = 'timetableBox';
 
   Future<Map<dynamic, List<Period>>> get getTimetableFromApiAndCache async {
-    Box<List<Period>> box = await Hive.openBox<List<Period>>(timetableBoxName);
+    Box<List<Period>> box = Hive.box<List<Period>>(timetableBoxName);
 
     if (await serverAvailable) {
       Map<dynamic, String> user = getCreds;
@@ -27,6 +27,11 @@ class HiveTimetableRepository {
 
   Future<Map<dynamic, List<Period>>> get getTimetableFromBox async {
     Box<List<Period>> timetableBox = Hive.box(timetableBoxName);
+
+    if (timetableBox.isEmpty) {
+      return getTimetableFromApiAndCache;
+    }
+
     return timetableBox.toMap();
   }
 }

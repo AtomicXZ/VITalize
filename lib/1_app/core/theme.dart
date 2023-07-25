@@ -13,11 +13,10 @@ final kColorSchemeDark = ColorScheme.fromSeed(
   brightness: Brightness.dark,
 );
 
-final customLightBackgroundColor = Color.lerp(
+final kCustomLightBackgroundColor = Color.lerp(
     kColorSchemeLight.primaryContainer, kColorSchemeLight.background, 0.4);
 
-final customDarkBackgroundColor = Color.lerp(
-    kColorSchemeDark.background, kColorSchemeDark.primaryContainer, 0.4);
+final kCustomDarkBackgroundColor = kColorSchemeDark.background;
 
 TextTheme getTextTheme(Color textColor) {
   return GoogleFonts.openSansTextTheme().apply(
@@ -33,14 +32,14 @@ TextTheme darkTextTheme = getTextTheme(Colors.white);
 final lightTheme = ThemeData().copyWith(
   useMaterial3: true,
   colorScheme: kColorSchemeLight,
-  scaffoldBackgroundColor: customLightBackgroundColor,
+  scaffoldBackgroundColor: kCustomLightBackgroundColor,
   appBarTheme: AppBarTheme(
     titleTextStyle: lightTextTheme.displayLarge!.copyWith(
       fontSize: 24,
       fontWeight: FontWeight.w500,
     ),
     elevation: 0,
-    backgroundColor: customLightBackgroundColor,
+    backgroundColor: kCustomLightBackgroundColor,
     scrolledUnderElevation: 0,
   ),
   textTheme: lightTextTheme,
@@ -49,14 +48,14 @@ final lightTheme = ThemeData().copyWith(
 final darkTheme = ThemeData().copyWith(
   useMaterial3: true,
   colorScheme: kColorSchemeDark,
-  scaffoldBackgroundColor: customDarkBackgroundColor,
+  scaffoldBackgroundColor: kCustomDarkBackgroundColor,
   appBarTheme: AppBarTheme(
     titleTextStyle: darkTextTheme.displayLarge!.copyWith(
       fontSize: 24,
       fontWeight: FontWeight.w500,
     ),
     elevation: 0,
-    backgroundColor: customDarkBackgroundColor,
+    backgroundColor: kCustomDarkBackgroundColor,
     scrolledUnderElevation: 0,
   ),
   textTheme: darkTextTheme,

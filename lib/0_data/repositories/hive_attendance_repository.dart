@@ -6,10 +6,10 @@ import 'api_repository.dart';
 
 class HiveAttendanceRepository {
   APIRepository apiRepository = APIRepository();
-  String attendanceBoxBoxName = 'attendanceBoxBox';
+  String attendanceBoxName = 'attendanceBox';
 
   Future<Map<dynamic, Attendance>> get getAttendanceFromApiAndCache async {
-    Box<Attendance> box = await Hive.openBox<Attendance>(attendanceBoxBoxName);
+    Box<Attendance> box = Hive.box<Attendance>(attendanceBoxName);
 
     if (await serverAvailable) {
       Map<dynamic, String> user = getCreds;
@@ -26,7 +26,12 @@ class HiveAttendanceRepository {
   }
 
   Future<Map<dynamic, Attendance>> get getAttendanceFromBox async {
-    Box<Attendance> attendanceBox = Hive.box(attendanceBoxBoxName);
+    Box<Attendance> attendanceBox = Hive.box(attendanceBoxName);
+
+    if (attendanceBox.isEmpty) {
+      return getAttendanceFromApiAndCache;
+    }
+
     return attendanceBox.toMap();
   }
 }

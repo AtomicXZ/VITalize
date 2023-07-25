@@ -8,7 +8,7 @@ class HiveProfileRepository {
   String profileBoxName = 'profileBox';
 
   Future<Map<dynamic, String>> get getProfileFromApiAndCache async {
-    Box<String> box = await Hive.openBox<String>(profileBoxName);
+    Box<String> box = Hive.box<String>(profileBoxName);
 
     if (await serverAvailable) {
       Map<dynamic, String> user = getCreds;
@@ -26,6 +26,11 @@ class HiveProfileRepository {
 
   Future<Map<dynamic, String>> get getProfileFromBox async {
     Box<String> profileBox = Hive.box(profileBoxName);
+
+    if (profileBox.isEmpty) {
+      return getProfileFromApiAndCache;
+    }
+
     return profileBox.toMap();
   }
 }

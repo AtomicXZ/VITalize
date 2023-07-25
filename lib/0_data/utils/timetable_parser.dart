@@ -1,10 +1,6 @@
-import 'dart:convert';
-
 import 'package:vtop_app/0_data/models/period.dart';
 
-Map<String, List<Period>> parseTimetableAllDays(String json) {
-  final Map<String, dynamic> data = jsonDecode(json);
-
+Map<String, List<Period>> parseTimetableAllDays(Map<String, dynamic> data) {
   Map<String, List<Period>> timetable = {};
 
   data.forEach((day, periodsList) {
