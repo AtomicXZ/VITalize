@@ -8,7 +8,7 @@ import 'package:vtop_app/0_data/repositories/api_repository.dart';
 class HiveAllRepository {
   APIRepository apiRepository = APIRepository();
   String timetableBoxName = 'timetableBox';
-  String attendanceBoxBoxName = 'attendanceBoxBox';
+  String attendanceBoxName = 'attendanceBox';
   String profileBoxName = 'profileBox';
 
   Future<void> get getAllFromApiAndCache async {
@@ -16,7 +16,7 @@ class HiveAllRepository {
     Box<List<Period>> timetableBox =
         await Hive.openBox<List<Period>>(timetableBoxName);
     Box<Attendance> attendanceBox =
-        await Hive.openBox<Attendance>(attendanceBoxBoxName);
+        await Hive.openBox<Attendance>(attendanceBoxName);
 
     if (await serverAvailable) {
       Map<dynamic, String> user = getCreds;
