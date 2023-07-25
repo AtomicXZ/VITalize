@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vtop_app/1_app/core/utils/is_first_launch.dart';
 
-import 'go_route_config.dart';
-import '../widgets/scaffold_with_navbar.dart';
+import 'package:vtop_app/1_app/core/utils/is_first_launch.dart';
+import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
+import 'package:vtop_app/1_app/core/widgets/scaffold_with_navbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');

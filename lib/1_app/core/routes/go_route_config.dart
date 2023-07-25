@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:vtop_app/1_app/pages/attendance_page/attendance_page.dart';
 import 'package:vtop_app/1_app/pages/home_page/homepage.dart';
 import 'package:vtop_app/1_app/pages/login_page/login_page.dart';
 import 'package:vtop_app/1_app/pages/marks_page/marks_page.dart';
 import 'package:vtop_app/1_app/pages/profile_page/profile_page.dart';
-
-import '../../pages/time_table/timetable_page.dart';
+import 'package:vtop_app/1_app/pages/time_table/timetable_page.dart';
 
 class GoRouterConfig {
   final IconData? icon;

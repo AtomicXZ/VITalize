@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/widgets/holiday.dart';
-import 'cubit/homepage_cubit.dart';
-import '../../core/routes/go_route_config.dart';
-import '../../core/widgets/circular_progess_indicator.dart';
-import '../../core/widgets/period_list.dart';
+import 'package:vtop_app/1_app/core/widgets/holiday.dart';
+import 'package:vtop_app/1_app/pages/home_page/cubit/homepage_cubit.dart';
+import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
+import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
+import 'package:vtop_app/1_app/core/widgets/period_list.dart';
 
 class HomePageProvider extends StatelessWidget {
   const HomePageProvider({super.key});

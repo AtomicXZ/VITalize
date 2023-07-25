@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../0_data/models/period.dart';
+import 'package:vtop_app/0_data/models/period.dart';
 
 class PeriodsList extends StatelessWidget {
   final List<Period> periods;

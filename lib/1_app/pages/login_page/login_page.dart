@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:vtop_app/1_app/core/utils/cache_all_data.dart';
 
-import '../../../0_data/utils/verify_creds.dart';
-import '../../core/routes/go_route_config.dart';
+import 'package:vtop_app/1_app/core/utils/cache_all_data.dart';
+import 'package:vtop_app/0_data/utils/verify_creds.dart';
+import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
