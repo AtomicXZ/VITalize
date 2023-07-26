@@ -1,6 +1,6 @@
 part of 'login_page_cubit.dart';
 
-enum LoginStatus { initial, loading, success, failure }
+enum LoginStatus { initial, loading, success, failure, serverOffline }
 
 class LoginPageState {
   final String username;

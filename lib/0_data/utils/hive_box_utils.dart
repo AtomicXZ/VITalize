@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
@@ -7,15 +8,15 @@ import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/models/attendance.dart';
 import 'package:vtop_app/0_data/models/period.dart';
 
-const String timetableBoxName = 'timetableBox';
-const String attendanceBoxName = 'attendanceBox';
-const String profileBoxName = 'profileBox';
-
 Future<bool> get serverAvailable async {
   try {
-    if ((await http.get(Uri.parse(baseURL))).statusCode == 200) {
+    if ((await http.get(Uri.parse(baseURL)).timeout(const Duration(seconds: 3)))
+            .statusCode ==
+        200) {
       return true;
     }
+  } on TimeoutException {
+    return false;
   } on SocketException {
     return false;
   }
@@ -32,10 +33,12 @@ void emptyAllBoxes() {
   Box<String> profileBox = Hive.box<String>(profileBoxName);
   Box<List<Period>> timetableBox = Hive.box<List<Period>>(timetableBoxName);
   Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
+  Box<String> semIDsBox = Hive.box<String>(semIDsBoxName);
   Box<String> userBox = Hive.box('userBox');
 
   profileBox.clear();
   timetableBox.clear();
   attendanceBox.clear();
   userBox.clear();
+  semIDsBox.clear();
 }

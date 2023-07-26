@@ -53,16 +53,20 @@ class LoginPage extends StatelessWidget {
                     listener: (context, state) {
                       if (state.status == LoginStatus.success) {
                         context.goNamed(homePageConfig.name);
+                      } else if (state.status == LoginStatus.serverOffline) {
+                        _showPopup(context, 'Server is offline',
+                            'Try again later or try contacting the developer.');
+                      } else if (state.status == LoginStatus.failure) {
+                        _showPopup(context, 'Invalid credentials',
+                            'Please check your credentials and try again.');
                       }
                     },
                     child: BlocBuilder<LoginPageCubit, LoginPageState>(
                       builder: (context, state) {
-                        if (state.status == LoginStatus.initial) {
-                          return const LoginForm();
-                        } else if (state.status == LoginStatus.loading) {
+                        if (state.status == LoginStatus.loading) {
                           return const CircularProgressIndicator();
                         } else {
-                          return const InvalidCredentials();
+                          return const LoginForm();
                         }
                       },
                     ),
@@ -77,4 +81,23 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget _gap() => const SizedBox(height: 16);
+
+  void _showPopup(BuildContext context, String title, String content) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(content),
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+        backgroundColor: Theme.of(context).colorScheme.background,
+      ),
+    );
+  }
 }
