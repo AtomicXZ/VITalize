@@ -49,24 +49,23 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  BlocBuilder<LoginPageCubit, LoginPageState>(
-                    builder: (context, state) {
-                      if (state.status == LoginStatus.initial) {
-                        return const LoginForm();
-                      } else if (state.status == LoginStatus.loading) {
-                        return const CircularProgressIndicator();
-                      } else if (state.status == LoginStatus.success) {
-                        return Center(
-                          child: ElevatedButton(
-                            onPressed: () =>
-                                context.goNamed(homePageConfig.name),
-                            child: const Text('Continue'),
-                          ),
-                        );
-                      } else {
-                        return const InvalidCredentials();
+                  BlocListener<LoginPageCubit, LoginPageState>(
+                    listener: (context, state) {
+                      if (state.status == LoginStatus.success) {
+                        context.goNamed(homePageConfig.name);
                       }
                     },
+                    child: BlocBuilder<LoginPageCubit, LoginPageState>(
+                      builder: (context, state) {
+                        if (state.status == LoginStatus.initial) {
+                          return const LoginForm();
+                        } else if (state.status == LoginStatus.loading) {
+                          return const CircularProgressIndicator();
+                        } else {
+                          return const InvalidCredentials();
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

@@ -16,12 +16,8 @@ class LoginPageCubit extends Cubit<LoginPageState> {
     emit(state.copyWith(password: password));
   }
 
-  void loginButtonPressed() {
-    emit(state.copyWith(status: LoginStatus.loading));
-    verifyCredentials();
-  }
-
   void verifyCredentials() async {
+    emit(state.copyWith(status: LoginStatus.loading));
     bool credsAreValid = await isValid(state.username, state.password);
 
     if (credsAreValid) {
