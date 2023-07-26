@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
+import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/pages/attendance_page/cubit/attendance_page_cubit.dart';
 import 'package:vtop_app/1_app/pages/attendance_page/widgets/attendance_card.dart';
 
@@ -25,7 +25,7 @@ class AttendancePage extends StatelessWidget {
     return BlocBuilder<AttendancePageCubit, AttendancePageState>(
       builder: (context, state) {
         if (state is AttendancePageInitial) {
-          return const CircularProgress();
+          return const CenteredCircularProgressBar();
         } else if (state is AttendancePageLoaded) {
           return ListView.builder(
             itemCount: state.attendance.length,

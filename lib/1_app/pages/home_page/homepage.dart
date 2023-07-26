@@ -7,7 +7,7 @@ import 'package:vtop_app/1_app/core/widgets/period_card.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/home_page_next_period_cubit.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/homepage_cubit.dart';
 import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
-import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
+import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/core/widgets/period_list.dart';
 
 class HomePageProvider extends StatelessWidget {
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Next Period:',
+          'Next Class:',
           style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
           child: BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
               builder: (context, state) {
             if (state is HomePageNextPeriodInitial) {
-              return const CircularProgress();
+              return const CenteredCircularProgressBar();
             } else if (state is HomePageNextPeriod) {
               return PeriodCard(period: state.period);
             } else if (state is HomePageNoNextPeriod ||
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Today\'s Periods:',
+              'Today\'s Classes:',
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -79,12 +79,12 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
         Expanded(
           child: BlocBuilder<HomePageCubit, HomePageState>(
             builder: (context, state) {
               if (state is HomePageInitial || state is HomePageLoading) {
-                return const CircularProgress();
+                return const CenteredCircularProgressBar();
               } else if (state is HomePagePeriods) {
                 return PeriodsList(periods: state.periods);
               } else if (state is HomePageHoliday) {

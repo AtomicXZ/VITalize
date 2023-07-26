@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
+import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/core/widgets/holiday.dart';
 import 'package:vtop_app/1_app/core/widgets/period_list.dart';
 
@@ -108,7 +108,7 @@ class TimetablePage extends StatelessWidget {
                 child: BlocBuilder<TimetableCubit, TimetableState>(
                   builder: (context, state) {
                     if (state is TimetableLoading) {
-                      return const CircularProgress();
+                      return const CenteredCircularProgressBar();
                     } else if (state is TimetablePeriods) {
                       return PeriodsList(periods: state.periods);
                     } else if (state is TimetableHoliday) {

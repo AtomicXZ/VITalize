@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
 import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
-import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
+import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/pages/profile_page/cubit/profile_page_cubit.dart';
 
 List<String> fields = [
@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
       BlocBuilder<ProfilePageCubit, ProfilePageState>(
           builder: (context, state) {
         if (state is ProfilePageInitial) {
-          return const CircularProgress();
+          return const CenteredCircularProgressBar();
         } else if (state is ProfilePageLoaded) {
           return ListView(
             children: [
