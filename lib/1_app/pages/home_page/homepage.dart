@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:vtop_app/1_app/core/widgets/holiday.dart';
+import 'package:vtop_app/1_app/core/widgets/period_card.dart';
+import 'package:vtop_app/1_app/pages/home_page/cubit/home_page_next_period_cubit.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/homepage_cubit.dart';
 import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
 import 'package:vtop_app/1_app/core/widgets/circular_progess_indicator.dart';
@@ -14,8 +16,11 @@ class HomePageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePageCubit()..todayTimetable(),
-      child: const HomePage(),
+      create: (context) => HomePageCubit()..todaysTimetable(),
+      child: BlocProvider(
+        create: (context) => HomePageNextPeriodCubit()..getNextPeriod(),
+        child: const HomePage(),
+      ),
     );
   }
 }
@@ -28,6 +33,33 @@ class HomePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          'Next Period:',
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+        SizedBox(
+          height: 148,
+          child: BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
+              builder: (context, state) {
+            if (state is HomePageNextPeriodInitial) {
+              return const CircularProgress();
+            } else if (state is HomePageNextPeriod) {
+              return PeriodCard(period: state.period);
+            } else if (state is HomePageNoNextPeriod ||
+                state is HomePageNextPeriodHoliday) {
+              return Center(
+                child: Text(
+                  'No upcoming class today.',
+                  style: const TextStyle().copyWith(fontSize: 16),
+                ),
+              );
+            } else {
+              return const Placeholder();
+            }
+          }),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

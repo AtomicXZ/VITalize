@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:vtop_app/0_data/models/period.dart';
 
+import 'package:vtop_app/0_data/models/period.dart';
 import 'package:vtop_app/0_data/repositories/hive_timetable_repository.dart';
-import 'package:vtop_app/1_app/core/utils/day.dart';
+import 'package:vtop_app/1_app/core/utils/time_utils.dart';
 
 part 'timetable_state.dart';
 

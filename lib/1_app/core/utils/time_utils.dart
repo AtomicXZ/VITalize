@@ -16,3 +16,17 @@ String get todayAsWord {
       return 'Holiday';
   }
 }
+
+String getCurrentTime() {
+  final DateTime now = DateTime.now();
+  final String twoDigitHour = _twoDigits(now.hour);
+  final String twoDigitMinute = _twoDigits(now.minute);
+  return '$twoDigitHour:$twoDigitMinute';
+}
+
+String _twoDigits(int n) {
+  if (n >= 10) {
+    return '$n';
+  }
+  return '0$n';
+}

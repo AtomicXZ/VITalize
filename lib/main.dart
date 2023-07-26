@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,
-      title: 'Vtop AP-p',
+      title: 'VITalize',
       routerConfig: routes,
     );
   }
