@@ -10,3 +10,5 @@ class AttendancePageLoaded extends AttendancePageState {
 
   AttendancePageLoaded(this.attendance);
 }
+
+class AttendancePageNoAttendanceInThisSem extends AttendancePageState {}

@@ -12,6 +12,10 @@ class AttendancePageCubit extends Cubit<AttendancePageState> {
 
   void loadAttendance() async {
     Map<dynamic, Attendance> attendance = await repository.getAttendanceFromBox;
-    emit(AttendancePageLoaded(attendance));
+    if (attendance.isNotEmpty) {
+      emit(AttendancePageLoaded(attendance));
+    } else {
+      emit(AttendancePageNoAttendanceInThisSem());
+    }
   }
 }
