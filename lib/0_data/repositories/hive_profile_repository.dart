@@ -1,12 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
 import 'package:vtop_app/0_data/repositories/api_repository.dart';
 
 class HiveProfileRepository {
   APIRepository apiRepository = APIRepository();
-  String profileBoxName = 'profileBox';
-
   Future<Map<dynamic, String>> get getProfileFromApiAndCache async {
     Box<String> box = Hive.box<String>(profileBoxName);
 

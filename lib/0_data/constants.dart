@@ -18,6 +18,7 @@ const String semIDsURL = '$baseURL$semIDsEndPoint';
 const String allURL = '$baseURL$allEndPoint';
 
 // hive box names
+const String userBoxName = 'userBox';
 const String timetableBoxName = 'timetableBox';
 const String attendanceBoxName = 'attendanceBox';
 const String profileBoxName = 'profileBox';

@@ -1,12 +1,13 @@
 import 'package:vtop_app/0_data/models/period.dart';
+import 'package:vtop_app/0_data/models/periods.dart';
 
-Map<String, List<Period>> parseTimetableAllDays(Map<String, dynamic> data) {
-  Map<String, List<Period>> timetable = {};
+Map<String, Periods> parseTimetableAllDays(Map<String, dynamic> data) {
+  Map<String, Periods> timetable = {};
 
   data.forEach((day, periodsList) {
-    List<Period> periods = (periodsList as List<dynamic>)
+    Periods periods = Periods((periodsList as List<dynamic>)
         .map((periodData) => Period.fromMap(periodData))
-        .toList();
+        .toList());
     timetable[day] = periods;
   });
   return timetable;

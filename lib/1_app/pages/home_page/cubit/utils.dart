@@ -6,7 +6,7 @@ HiveTimetableRepository repository = HiveTimetableRepository();
 
 Future<List<Period>> getTodaysPeriods() async {
   if (todayAsWord != 'Holiday') {
-    return (await repository.getTimetableFromBox)[todayAsWord]!;
+    return (await repository.getTimetableFromBox)[todayAsWord]!.periods;
   } else {
     return [];
   }

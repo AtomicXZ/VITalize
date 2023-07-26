@@ -17,7 +17,7 @@ class TimetableCubit extends Cubit<TimetableState> {
     String day = todayAsWord;
     if (day != 'Holiday') {
       List<Period> periods =
-          (await repository.getTimetableFromBox)[todayAsWord]!;
+          (await repository.getTimetableFromBox)[todayAsWord]!.periods;
       emit(TimetablePeriods(periods));
     } else {
       emit(TimetableHoliday());
@@ -26,7 +26,7 @@ class TimetableCubit extends Cubit<TimetableState> {
 
   void timetableByDay(String day) async {
     emit(TimetableLoading());
-    List<Period> periods = (await repository.getTimetableFromBox)[day]!;
+    List<Period> periods = (await repository.getTimetableFromBox)[day]!.periods;
     emit(TimetablePeriods(periods));
   }
 }

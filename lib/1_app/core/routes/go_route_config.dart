@@ -48,7 +48,7 @@ final marksPageConfig = GoRouterConfig(
   icon: Icons.calculate_outlined,
   selectedIcon: Icons.calculate_rounded,
   name: 'Marks',
-  child: const MarksPage(),
+  child: const MarksPageProvider(),
 );
 final profilePageConfig = GoRouterConfig(
   icon: Icons.person_outline_rounded,

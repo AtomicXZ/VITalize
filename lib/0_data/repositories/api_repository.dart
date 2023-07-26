@@ -3,19 +3,20 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:vtop_app/0_data/models/attendance.dart';
+import 'package:vtop_app/0_data/models/periods.dart';
 import 'package:vtop_app/0_data/utils/attendance_parser.dart';
 import 'package:vtop_app/0_data/utils/profile_parser.dart';
 import 'package:vtop_app/0_data/constants.dart';
+import 'package:vtop_app/0_data/utils/sem_id_parser.dart';
 import 'package:vtop_app/0_data/utils/timetable_parser.dart';
-import 'package:vtop_app/0_data/models/period.dart';
 
 class APIRepository {
-  Future<Map<String, List<Period>>> getTimetable(
+  Future<Map<String, Periods>> getTimetable(
       String username, String password) async {
     final http.Response resp = await http.post(Uri.parse(timetableURL),
-        body: {'username': username, 'password': password});
+        body: getPostBody(username, password));
     if (resp.statusCode == 200) {
-      Map<String, List<Period>> timetable =
+      Map<String, Periods> timetable =
           parseTimetableAllDays(jsonDecode(resp.body));
       return timetable;
     } else {
@@ -26,7 +27,7 @@ class APIRepository {
   Future<Map<String, String>> getProfile(
       String username, String password) async {
     final http.Response resp = await http.post(Uri.parse(profileURL),
-        body: {'username': username, 'password': password});
+        body: getPostBody(username, password));
     if (resp.statusCode == 200) {
       return parseProfile(jsonDecode(resp.body));
     } else {
@@ -37,9 +38,20 @@ class APIRepository {
   Future<Map<String, Attendance>> getAttendance(
       String username, String password) async {
     final http.Response resp = await http.post(Uri.parse(attendanceURL),
-        body: {'username': username, 'password': password});
+        body: getPostBody(username, password));
     if (resp.statusCode == 200) {
       return parseAttendance(jsonDecode(resp.body));
+    } else {
+      return {};
+    }
+  }
+
+  Future<Map<String, String>> getSemIDs(
+      String username, String password) async {
+    final http.Response resp = await http.post(Uri.parse(semIDsURL),
+        body: getPostBody(username, password));
+    if (resp.statusCode == 200) {
+      return jsonDecode(resp.body);
     } else {
       return {};
     }
@@ -56,6 +68,7 @@ class APIRepository {
       all['timetable'] = parseTimetableAllDays(body['timetable']);
       all['profile'] = parseProfile(body['profile']);
       all['attendance'] = parseAttendance(body['attendance']);
+      all['semIDs'] = parseSemID(body['semIDs']);
       return all;
     } else {
       return {};
