@@ -1,9 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:vtop_app/0_data/constants.dart';
+import 'package:vtop_app/0_data/models/period.dart';
 import 'package:vtop_app/0_data/models/periods.dart';
 import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
 import 'package:vtop_app/0_data/repositories/api_repository.dart';
+import 'package:vtop_app/1_app/core/utils/time_utils.dart';
 
 class HiveTimetableRepository {
   APIRepository apiRepository = APIRepository();
@@ -32,5 +34,13 @@ class HiveTimetableRepository {
     }
 
     return timetableBox.toMap();
+  }
+
+  Future<List<Period>> getTodaysPeriods() async {
+    if (todayAsWord != 'Holiday') {
+      return (await getTimetableFromBox)[todayAsWord]!.periods;
+    } else {
+      return [];
+    }
   }
 }
