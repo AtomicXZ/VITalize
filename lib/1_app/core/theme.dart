@@ -1,20 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+Color darken(Color c, [int percent = 10]) {
+  assert(1 <= percent && percent <= 100);
+  var f = 1 - percent / 100;
+  return Color.fromARGB(c.alpha, (c.red * f).round(), (c.green * f).round(),
+      (c.blue * f).round());
+}
+
+Color lighten(Color c, [int percent = 10]) {
+  assert(1 <= percent && percent <= 100);
+  var p = percent / 100;
+  return Color.fromARGB(
+      c.alpha,
+      c.red + ((255 - c.red) * p).round(),
+      c.green + ((255 - c.green) * p).round(),
+      c.blue + ((255 - c.blue) * p).round());
+}
+
+final kThemeColor = Colors.lightGreenAccent;
+
 final kColorSchemeLight = ColorScheme.fromSeed(
-  seedColor: Colors.lightGreenAccent,
+  seedColor: kThemeColor,
   brightness: Brightness.light,
 );
 
 final kColorSchemeDark = ColorScheme.fromSeed(
-  seedColor: Colors.greenAccent,
+  seedColor: kThemeColor,
   brightness: Brightness.dark,
 );
 
-final kCustomLightBackgroundColor = Color.lerp(
-    kColorSchemeLight.primaryContainer, kColorSchemeLight.background, 0.4);
+final kCustomLightBackgroundColor =
+    lighten(kColorSchemeLight.primaryContainer, 80);
 
-final kCustomDarkBackgroundColor = kColorSchemeDark.background;
+final kCustomDarkBackgroundColor =
+    darken(kColorSchemeDark.primaryContainer, 80);
 
 TextTheme getTextTheme(Color textColor) {
   return GoogleFonts.openSansTextTheme().apply(
