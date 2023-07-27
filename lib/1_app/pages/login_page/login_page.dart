@@ -24,54 +24,57 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Card(
-          elevation: 8,
-          child: Container(
-            padding: const EdgeInsets.all(32.0),
-            constraints: const BoxConstraints(maxWidth: 350),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.school,
-                    size: 100,
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                  _gap(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      'Welcome to VITalize',
-                      style: Theme.of(context).textTheme.bodyLarge,
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Center(
+          child: Card(
+            elevation: 8,
+            child: Container(
+              padding: const EdgeInsets.all(32.0),
+              constraints: const BoxConstraints(maxWidth: 350),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.school,
+                      size: 100,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  BlocListener<LoginPageCubit, LoginPageState>(
-                    listener: (context, state) {
-                      if (state.status == LoginStatus.success) {
-                        context.goNamed(homePageConfig.name);
-                      } else if (state.status == LoginStatus.serverOffline) {
-                        _showPopup(context, 'Server is offline',
-                            'Try again later or try contacting the developer.');
-                      } else if (state.status == LoginStatus.failure) {
-                        _showPopup(context, 'Invalid credentials',
-                            'Please check your credentials and try again.');
-                      }
-                    },
-                    child: BlocBuilder<LoginPageCubit, LoginPageState>(
-                      builder: (context, state) {
-                        if (state.status == LoginStatus.loading) {
-                          return const CircularProgressIndicator();
-                        } else {
-                          return const LoginForm();
+                    _gap(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Text(
+                        'Welcome to VITalize',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    BlocListener<LoginPageCubit, LoginPageState>(
+                      listener: (context, state) {
+                        if (state.status == LoginStatus.success) {
+                          context.goNamed(homePageConfig.name);
+                        } else if (state.status == LoginStatus.serverOffline) {
+                          _showPopup(context, 'Server is offline',
+                              'Try again later or try contacting the developer.');
+                        } else if (state.status == LoginStatus.failure) {
+                          _showPopup(context, 'Invalid credentials',
+                              'Please check your credentials and try again.');
                         }
                       },
+                      child: BlocBuilder<LoginPageCubit, LoginPageState>(
+                        builder: (context, state) {
+                          if (state.status == LoginStatus.loading) {
+                            return const CircularProgressIndicator();
+                          } else {
+                            return const LoginForm();
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
