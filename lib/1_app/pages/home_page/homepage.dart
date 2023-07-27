@@ -33,12 +33,16 @@ class HomePage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Next Class:',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Text(
+            'Next Class:',
+            style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
         ),
+        const SizedBox(height: 8),
         SizedBox(
           height: 148,
           child: BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
@@ -60,24 +64,27 @@ class HomePage extends StatelessWidget {
             }
           }),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Today\'s Classes:',
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            TextButton(
-              onPressed: () {
-                context.pushNamed(timetablePageConfig.name);
-              },
-              child: const Text(
-                'See all',
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Today\'s Classes:',
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
-            ),
-          ],
+              TextButton(
+                onPressed: () {
+                  context.pushNamed(timetablePageConfig.name);
+                },
+                child: const Text(
+                  'See all',
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 8),
         Expanded(

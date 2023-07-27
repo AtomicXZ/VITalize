@@ -42,12 +42,21 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   percent_indicator: ^4.2.3
+  home_widget: ^0.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   hive_generator: ^2.0.0
   build_runner: ^2.4.6
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  remove_alpha_ios: true
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

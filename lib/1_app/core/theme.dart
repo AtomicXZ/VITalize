@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const seedColor = Colors.pinkAccent;
-
 final kColorSchemeLight = ColorScheme.fromSeed(
-  seedColor: seedColor,
+  seedColor: Colors.lightGreenAccent,
   brightness: Brightness.light,
 );
 
 final kColorSchemeDark = ColorScheme.fromSeed(
-  seedColor: seedColor,
+  seedColor: Colors.greenAccent,
   brightness: Brightness.dark,
 );
 
