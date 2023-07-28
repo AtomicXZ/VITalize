@@ -12,7 +12,6 @@ class HomePageCubit extends Cubit<HomePageState> {
   HomePageCubit() : super(HomePageInitial());
 
   void todaysTimetable() async {
-    emit(HomePageLoading());
     List<Period> periods = await repository.getTodaysPeriods();
     if (periods.isNotEmpty) {
       emit(HomePagePeriods(periods));
@@ -20,4 +19,6 @@ class HomePageCubit extends Cubit<HomePageState> {
       emit(HomePageHoliday());
     }
   }
+
+  void emitLoadingState() => emit(HomePageInitial());
 }

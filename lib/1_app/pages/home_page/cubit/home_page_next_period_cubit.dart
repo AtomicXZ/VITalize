@@ -27,4 +27,6 @@ class HomePageNextPeriodCubit extends Cubit<HomePageNextPeriodState> {
       emit(HomePageNextPeriodHoliday());
     }
   }
+
+  void emitLoadingState() => emit(HomePageNextPeriodInitial());
 }
