@@ -46,7 +46,7 @@ void registerAllAdapters() {
 
 void emptyAllBoxes() {
   Box<String> profileBox = Hive.box<String>(profileBoxName);
-  Box<List<Period>> timetableBox = Hive.box<List<Period>>(timetableBoxName);
+  Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);
   Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
   Box<String> semIDsBox = Hive.box<String>(semIDsBoxName);
   Box<String> userBox = Hive.box('userBox');

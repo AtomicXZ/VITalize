@@ -41,16 +41,49 @@ class ProfilePage extends StatelessWidget {
         } else if (state is ProfilePageLoaded) {
           return ListView(
             children: [
-              Center(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(75),
-                  child: Image.memory(
-                    base64.decode(state.profile['image']!),
-                    fit: BoxFit.fill,
-                    height: 150,
-                    width: 150,
+              Stack(
+                children: [
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(75),
+                      child: Image.memory(
+                        base64.decode(state.profile['image']!),
+                        fit: BoxFit.fill,
+                        height: 150,
+                        width: 150,
+                      ),
+                    ),
                   ),
-                ),
+                  Positioned(
+                    right: 0,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(6),
+                      onTap: () {
+                        emptyAllBoxes();
+                        context.goNamed(loginPageConfig.name);
+                      },
+                      onLongPress: () =>
+                          ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondary,
+                          content: Text(
+                            'Logout',
+                            style: TextStyle().copyWith(
+                              color: Theme.of(context).colorScheme.onSecondary,
+                            ),
+                          ),
+                          duration: const Duration(milliseconds: 500),
+                        ),
+                      ),
+                      child: Icon(
+                        Icons.logout_rounded,
+                        size: 30,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 32),
               for (var field in fields)
@@ -59,14 +92,6 @@ class ProfilePage extends StatelessWidget {
                   state.profile[field]!,
                   Theme.of(context).colorScheme.secondary,
                 ),
-              const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () {
-                  emptyAllBoxes();
-                  context.goNamed(loginPageConfig.name);
-                },
-                child: const Text('Logout'),
-              ),
             ],
           );
         } else {
