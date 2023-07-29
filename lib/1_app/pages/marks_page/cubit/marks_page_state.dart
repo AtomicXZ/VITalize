@@ -1,11 +1,14 @@
 part of 'marks_page_cubit.dart';
 
 @immutable
-abstract class SemesterIDsMenuState {}
+abstract class MarksPageState {}
 
-class SemesterIDsMenuInitial extends SemesterIDsMenuState {}
+class MarksPageInitial extends MarksPageState {}
 
-class SemesterIDsMenuLoaded extends SemesterIDsMenuState {
-  final Map<dynamic, String> semIDs;
-  SemesterIDsMenuLoaded(this.semIDs);
+class MarksPageLoading extends MarksPageState {}
+
+class MarksPageLoaded extends MarksPageState {
+  final Map<dynamic, Marks> marks;
+
+  MarksPageLoaded(this.marks);
 }

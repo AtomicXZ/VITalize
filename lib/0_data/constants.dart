@@ -7,6 +7,7 @@ const String profileEndPoint = '/api/profile';
 const String attendanceEndPoint = '/api/attendance';
 const String timetableEndPoint = '/api/timetable';
 const String semIDsEndPoint = '/api/semIDs';
+const String marksEndPoint = '/api/marks';
 const String allEndPoint = '/api/all';
 
 // api url constants
@@ -15,6 +16,7 @@ const String profileURL = '$baseURL$profileEndPoint';
 const String attendanceURL = '$baseURL$attendanceEndPoint';
 const String timetableURL = '$baseURL$timetableEndPoint';
 const String semIDsURL = '$baseURL$semIDsEndPoint';
+const String marksURL = '$baseURL$marksEndPoint';
 const String allURL = '$baseURL$allEndPoint';
 
 // hive box names
