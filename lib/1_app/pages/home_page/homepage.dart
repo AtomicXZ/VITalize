@@ -16,13 +16,14 @@ class HomePageProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomePageCubit()..todaysTimetable(),
-      child: BlocProvider(
-        create: (context) => HomePageNextPeriodCubit()..getNextPeriod(),
-        child: const HomePage(),
+    return MultiBlocProvider(providers: [
+      BlocProvider<HomePageCubit>(
+        create: (context) => HomePageCubit()..todaysTimetable(),
       ),
-    );
+      BlocProvider<HomePageNextPeriodCubit>(
+        create: (context) => HomePageNextPeriodCubit()..getNextPeriod(),
+      ),
+    ], child: const HomePage());
   }
 }
 

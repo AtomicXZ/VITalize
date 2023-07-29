@@ -21,13 +21,14 @@ class TimetablePageProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => DayCubit(),
-      child: BlocProvider(
-        create: (context) => TimetableCubit()..todayTimeTable(),
-        child: const TimetablePage(),
+    return MultiBlocProvider(providers: [
+      BlocProvider<DayCubit>(
+        create: (context) => DayCubit(),
       ),
-    );
+      BlocProvider<TimetableCubit>(
+        create: (context) => TimetableCubit()..todayTimeTable(),
+      ),
+    ], child: const TimetablePage());
   }
 }
 
