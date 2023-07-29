@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     content: Text(
                       'Refresh all data.',
-                      style: TextStyle().copyWith(
+                      style: const TextStyle().copyWith(
                         color: Theme.of(context).colorScheme.onSecondary,
                       ),
                     ),

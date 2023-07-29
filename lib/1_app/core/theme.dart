@@ -18,7 +18,7 @@ Color lighten(Color c, [int percent = 10]) {
       c.blue + ((255 - c.blue) * p).round());
 }
 
-final kThemeColor = Colors.lightGreenAccent;
+const kThemeColor = Colors.lightGreenAccent;
 
 final kColorSchemeLight = ColorScheme.fromSeed(
   seedColor: kThemeColor,

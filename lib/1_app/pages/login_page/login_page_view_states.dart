@@ -74,37 +74,3 @@ class LoginForm extends StatelessWidget {
 
   Widget _gap() => const SizedBox(height: 16);
 }
-
-class InvalidCredentials extends StatelessWidget {
-  const InvalidCredentials({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 16),
-        Text(
-          'Invalid Credentials',
-          style: const TextStyle().copyWith(
-              color: Theme.of(context).colorScheme.secondary, fontSize: 20),
-        ),
-        Text(
-          'The username or password is incorrect.',
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const SizedBox(height: 8),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton(
-              onPressed: () => BlocProvider.of<LoginPageCubit>(context)
-                  .invalidCredentialsOKbuttonPressed(),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}

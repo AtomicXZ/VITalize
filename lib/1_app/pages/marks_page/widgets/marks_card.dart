@@ -21,7 +21,7 @@ class MarksCard extends StatelessWidget {
           children: [
             Text(
               subject.name,
-              style: TextStyle().copyWith(
+              style: const TextStyle().copyWith(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: theme.colorScheme.secondary,

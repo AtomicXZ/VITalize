@@ -81,7 +81,7 @@ class MarksPage extends StatelessWidget {
     if (state is MarksPageInitial) {
       return const SizedBox();
     } else if (state is MarksPageLoading) {
-      return CenterWidgetInColumn(child: const CircularProgressIndicator());
+      return const CenterWidgetInColumn(child: CircularProgressIndicator());
     } else if (state is MarksPageError) {
       return _buildErrorWidget(context);
     } else if (state is MarksPageLoaded) {
@@ -106,7 +106,7 @@ class MarksPage extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Something went wrong.',
-              style: TextStyle().copyWith(fontSize: 16),
+              style: const TextStyle().copyWith(fontSize: 16),
             ),
             const SizedBox(height: 8),
             ElevatedButton(
@@ -125,7 +125,7 @@ class MarksPage extends StatelessWidget {
       return CenterWidgetInColumn(
         child: Text(
           'No marks available for this semester.',
-          style: TextStyle().copyWith(fontSize: 16),
+          style: const TextStyle().copyWith(fontSize: 16),
         ),
       );
     } else {

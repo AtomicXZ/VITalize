@@ -11,7 +11,7 @@ import 'package:vtop_app/0_data/models/periods.dart';
 
 Future<bool> get serverAvailable async {
   try {
-    if ((await http.get(Uri.parse(baseURL)).timeout(const Duration(seconds: 4)))
+    if ((await http.get(Uri.parse(baseURL)).timeout(const Duration(seconds: 3)))
             .statusCode ==
         200) {
       return true;

@@ -7,9 +7,9 @@ Map<String, Marks> parseMarks(Map<String, dynamic> data) {
     Map<String, Map<String, String>> resultMarksMap = {};
 
     value['marks'].forEach((key, value) {
-      Map<String, String> temp_map = Map.from(value)
+      Map<String, String> tempMap = Map.from(value)
         ..updateAll((key, value) => value.toString());
-      resultMarksMap[key] = temp_map;
+      resultMarksMap[key] = tempMap;
     });
 
     marks[key] = Marks.fromMap(Map.from(value)..['marks'] = resultMarksMap);
