@@ -8,10 +8,21 @@ part 'marks_page_state.dart';
 
 class MarksPageCubit extends Cubit<MarksPageState> {
   MarksRepository repository = MarksRepository();
+  String semID = '';
+
   MarksPageCubit() : super(MarksPageInitial());
 
   void getMarks(String semID) async {
+    this.semID = semID;
     emit(MarksPageLoading());
-    emit(MarksPageLoaded(await repository.getMarksFromApi(semID)));
+    var data = await repository.getMarksFromApi(semID);
+    data.fold(
+      (failure) => emit(MarksPageError()),
+      (marks) => emit(MarksPageLoaded(marks)),
+    );
+  }
+
+  void getMarksFromVar() async {
+    getMarks(semID);
   }
 }

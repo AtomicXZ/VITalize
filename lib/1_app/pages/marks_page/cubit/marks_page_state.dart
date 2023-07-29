@@ -7,6 +7,8 @@ class MarksPageInitial extends MarksPageState {}
 
 class MarksPageLoading extends MarksPageState {}
 
+class MarksPageError extends MarksPageState {}
+
 class MarksPageLoaded extends MarksPageState {
   final Map<dynamic, Marks> marks;
 

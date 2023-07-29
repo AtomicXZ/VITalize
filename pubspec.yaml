@@ -43,6 +43,7 @@ dependencies:
   hive_flutter: ^1.1.0
   percent_indicator: ^4.2.3
   home_widget: ^0.3.0
+  either_dart: ^1.0.0
 
 dev_dependencies:
   flutter_test:
