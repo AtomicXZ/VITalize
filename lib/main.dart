@@ -20,8 +20,9 @@ class MyApp extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: lightTheme,
-      darkTheme: darkTheme,
+      theme: ThemeGenerator.generateThemeData(Colors.lightGreenAccent),
+      darkTheme: ThemeGenerator.generateThemeData(Colors.lightGreenAccent,
+          isLight: false),
       title: 'VITalize',
       routerConfig: routes,
     );
