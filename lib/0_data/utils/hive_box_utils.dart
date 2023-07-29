@@ -11,7 +11,7 @@ import 'package:vtop_app/0_data/models/periods.dart';
 
 Future<bool> get serverAvailable async {
   try {
-    if ((await http.get(Uri.parse(baseURL)).timeout(const Duration(seconds: 2)))
+    if ((await http.get(Uri.parse(baseURL)).timeout(const Duration(seconds: 4)))
             .statusCode ==
         200) {
       return true;
@@ -25,7 +25,7 @@ Future<bool> get serverAvailable async {
 }
 
 Map<dynamic, String> get getCreds {
-  Box<String> userBox = Hive.box('userBox');
+  Box<String> userBox = Hive.box(userBoxName);
   Map<dynamic, String> userMap = userBox.toMap();
   return userMap;
 }
@@ -49,7 +49,7 @@ void emptyAllBoxes() {
   Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);
   Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
   Box<String> semIDsBox = Hive.box<String>(semIDsBoxName);
-  Box<String> userBox = Hive.box('userBox');
+  Box<String> userBox = Hive.box(userBoxName);
 
   profileBox.clear();
   timetableBox.clear();
