@@ -26,8 +26,11 @@ class HiveAttendanceRepository {
 
   Future<Map<dynamic, Attendance>> get getAttendanceFromBox async {
     Box<Attendance> attendanceBox = Hive.box(attendanceBoxName);
+    Box<String> userBox = Hive.box(userBoxName);
+    String day = DateTime.now().day.toString();
 
-    if (attendanceBox.isEmpty) {
+    if (attendanceBox.isEmpty || userBox.get('attendanceLastUpdated') != day) {
+      userBox.put('attendanceLastUpdated', day);
       return getAttendanceFromApiAndCache;
     }
 
