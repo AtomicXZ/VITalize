@@ -10,9 +10,10 @@ class PeriodsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: periods.length,
-      itemBuilder: (context, index) => PeriodCard(period: periods[index]),
+    return Column(
+      children: [
+        for (Period period in periods) PeriodCard(period: period),
+      ],
     );
   }
 }

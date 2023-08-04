@@ -17,7 +17,7 @@ class ScaffoldWithNavbar extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 24, 12, 0),
+        padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
         child: allNavBarConfigs[index].child,
       )),
       bottomNavigationBar: NavigationBar(

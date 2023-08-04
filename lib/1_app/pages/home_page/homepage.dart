@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vtop_app/1_app/core/utils/cache_all_data.dart';
 
+import 'package:vtop_app/1_app/core/utils/cache_all_data.dart';
 import 'package:vtop_app/1_app/core/widgets/holiday.dart';
 import 'package:vtop_app/1_app/core/widgets/period_card.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/home_page_next_period_cubit.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/homepage_cubit.dart';
 import 'package:vtop_app/1_app/core/routes/go_route_config.dart';
-import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/core/widgets/period_list.dart';
 
 class HomePageProvider extends StatelessWidget {
@@ -32,8 +31,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -42,8 +40,9 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 'Next Class:',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                      fontWeight: FontWeight.w300,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
               ),
               InkWell(
@@ -80,13 +79,13 @@ class HomePage extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         SizedBox(
-          height: 148,
+          height: 125,
           child: BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
               builder: (context, state) {
             if (state is HomePageNextPeriodInitial) {
-              return const CenteredCircularProgressBar();
+              return const SizedBox();
             } else if (state is HomePageNextPeriod) {
-              return PeriodCard(period: state.period);
+              return PeriodCard(period: state.period, isNextPeriodTile: true);
             } else if (state is HomePageNoNextPeriod ||
                 state is HomePageNextPeriodHoliday) {
               return Center(
@@ -107,8 +106,9 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 'Today\'s Classes:',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                      fontWeight: FontWeight.w300,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
               ),
               TextButton(
@@ -123,20 +123,25 @@ class HomePage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Expanded(
-          child: BlocBuilder<HomePageCubit, HomePageState>(
-            builder: (context, state) {
-              if (state is HomePageInitial) {
-                return const CenteredCircularProgressBar();
-              } else if (state is HomePagePeriods) {
-                return PeriodsList(periods: state.periods);
-              } else if (state is HomePageHoliday) {
-                return const Holiday();
-              } else {
-                return const Placeholder();
-              }
-            },
-          ),
+        BlocBuilder<HomePageCubit, HomePageState>(
+          builder: (context, state) {
+            if (state is HomePageInitial) {
+              return const Column(
+                children: [
+                  SizedBox(
+                    height: 175,
+                  ),
+                  CircularProgressIndicator(),
+                ],
+              );
+            } else if (state is HomePagePeriods) {
+              return PeriodsList(periods: state.periods);
+            } else if (state is HomePageHoliday) {
+              return const Holiday();
+            } else {
+              return const Placeholder();
+            }
+          },
         ),
       ],
     );

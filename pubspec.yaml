@@ -44,6 +44,7 @@ dependencies:
   percent_indicator: ^4.2.3
   home_widget: ^0.3.0
   either_dart: ^1.0.0
+  dynamic_color: ^1.6.6
 
 dev_dependencies:
   flutter_test:

@@ -111,7 +111,9 @@ class TimetablePage extends StatelessWidget {
                     if (state is TimetableLoading) {
                       return const CenteredCircularProgressBar();
                     } else if (state is TimetablePeriods) {
-                      return PeriodsList(periods: state.periods);
+                      return SingleChildScrollView(
+                        child: PeriodsList(periods: state.periods),
+                      );
                     } else if (state is TimetableHoliday) {
                       return const Holiday();
                     } else {

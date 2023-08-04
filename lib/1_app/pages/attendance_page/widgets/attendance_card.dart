@@ -14,8 +14,9 @@ class AttendanceCard extends StatelessWidget {
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      color: theme.colorScheme.secondaryContainer,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -53,7 +54,7 @@ class AttendanceCard extends StatelessWidget {
                   children: [
                     CircularPercentIndicator(
                       radius: 22,
-                      progressColor: theme.colorScheme.primary.withOpacity(0.8),
+                      progressColor: theme.colorScheme.primary,
                       percent:
                           double.parse(attendance.attendancePercentage) / 100,
                       center: Text(
