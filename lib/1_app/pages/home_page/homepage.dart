@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:vtop_app/1_app/core/utils/cache_all_data.dart';
+import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/core/widgets/holiday.dart';
 import 'package:vtop_app/1_app/core/widgets/period_card.dart';
 import 'package:vtop_app/1_app/pages/home_page/cubit/home_page_next_period_cubit.dart';
@@ -83,7 +84,7 @@ class HomePage extends StatelessWidget {
           child: BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
               builder: (context, state) {
             if (state is HomePageNextPeriodInitial) {
-              return const SizedBox();
+              return const CenteredCircularProgressBar();
             } else if (state is HomePageNextPeriod) {
               return PeriodCard(period: state.period, isNextPeriodTile: true);
             } else if (state is HomePageNoNextPeriod ||
