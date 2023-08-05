@@ -95,6 +95,8 @@ FloatingActionButtonThemeData floatingActionButton(ColorScheme colorScheme) {
 AppBarTheme appBarThemeLight(ColorScheme colorScheme) {
   return AppBarTheme(
     elevation: 0,
+    scrolledUnderElevation: 0,
+    backgroundColor: lighten(colorScheme.primaryContainer),
     systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
       statusBarColor: Colors.transparent,
     ),
@@ -104,6 +106,7 @@ AppBarTheme appBarThemeLight(ColorScheme colorScheme) {
 AppBarTheme appBarThemeDark(ColorScheme colorScheme) {
   return AppBarTheme(
     elevation: 0,
+    scrolledUnderElevation: 0,
     systemOverlayStyle: SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent,
     ),
@@ -132,6 +135,16 @@ TimePickerThemeData get timePickerTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
     hourMinuteShape: const CircleBorder(),
   );
+}
+
+Color lighten(Color c, [int percent = 80]) {
+  assert(1 <= percent && percent <= 100);
+  var p = percent / 100;
+  return Color.fromARGB(
+      c.alpha,
+      c.red + ((255 - c.red) * p).round(),
+      c.green + ((255 - c.green) * p).round(),
+      c.blue + ((255 - c.blue) * p).round());
 }
 
 CustomColors lightCustomColor = CustomColors(

@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           timePickerTheme: timePickerTheme,
           appBarTheme: appBarThemeLight(lightColorScheme),
           useMaterial3: true,
-          scaffoldBackgroundColor: lightColorScheme.background,
+          scaffoldBackgroundColor: lighten(lightColorScheme.primaryContainer),
           dialogBackgroundColor: lightColorScheme.background,
           navigationBarTheme: navigationBarThemeData(
             lightColorScheme,
