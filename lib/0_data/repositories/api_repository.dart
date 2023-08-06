@@ -70,6 +70,16 @@ class APIRepository {
     }
   }
 
+  Future<Map> getGrades(String username, String password) async {
+    final http.Response resp = await http.post(Uri.parse(gradesURL),
+        body: getPostBody(username, password));
+    if (resp.statusCode == 200) {
+      return jsonDecode(resp.body);
+    } else {
+      return {};
+    }
+  }
+
   Future<Map<String, Map<String, dynamic>>> getAll(
       String username, String password) async {
     final http.Response resp = await http.post(Uri.parse(allURL),
@@ -82,6 +92,7 @@ class APIRepository {
       all['profile'] = parseProfile(body['profile']);
       all['attendance'] = parseAttendance(body['attendance']);
       all['semIDs'] = parseSemID(body['semIDs']);
+      all['grades'] = body['grades'];
       return all;
     } else {
       return {};

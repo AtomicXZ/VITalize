@@ -50,13 +50,7 @@ class LoginForm extends StatelessWidget {
         _gap(),
         SizedBox(
           width: 125,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Theme.of(context).colorScheme.onSecondary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
+          child: FloatingActionButton(
             child: const Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(

@@ -8,6 +8,7 @@ const String attendanceEndPoint = '/api/attendance';
 const String timetableEndPoint = '/api/timetable';
 const String semIDsEndPoint = '/api/semIDs';
 const String marksEndPoint = '/api/marks';
+const String gradesEndPoint = '/api/grades';
 const String allEndPoint = '/api/all';
 
 // api url constants
@@ -17,6 +18,7 @@ const String attendanceURL = '$baseURL$attendanceEndPoint';
 const String timetableURL = '$baseURL$timetableEndPoint';
 const String semIDsURL = '$baseURL$semIDsEndPoint';
 const String marksURL = '$baseURL$marksEndPoint';
+const String gradesURL = '$baseURL$gradesEndPoint';
 const String allURL = '$baseURL$allEndPoint';
 
 // hive box names
@@ -25,6 +27,7 @@ const String timetableBoxName = 'timetableBox';
 const String attendanceBoxName = 'attendanceBox';
 const String profileBoxName = 'profileBox';
 const String semIDsBoxName = 'semIDsBox';
+const String gradesBoxName = 'gradesBox';
 
 // api post body for requests
 Map<String, String> getPostBody(String username, String password) {

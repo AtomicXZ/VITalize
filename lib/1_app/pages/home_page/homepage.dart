@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Next Class:',
+                'Next Class',
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w300,
                       color: Theme.of(context).colorScheme.onSurface,
@@ -105,7 +105,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Today\'s Classes:',
+                'Today\'s Classes',
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.w300,
                       color: Theme.of(context).colorScheme.onSurface,

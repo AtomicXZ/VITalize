@@ -46,10 +46,13 @@ class LoginPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         'Welcome to VITalize',
-                        style: Theme.of(context).textTheme.bodyLarge,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(fontSize: 18),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 16),
                     BlocListener<LoginPageCubit, LoginPageState>(
                       listener: (context, state) {
                         if (state.status == LoginStatus.success) {
@@ -88,7 +91,13 @@ class LoginPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text(title),
+        title: Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .headlineSmall!
+              .copyWith(color: Theme.of(context).colorScheme.secondary),
+        ),
         content: Text(content),
         actions: [
           ElevatedButton(
