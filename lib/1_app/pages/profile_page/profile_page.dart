@@ -45,12 +45,12 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Center(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(60),
+                      borderRadius: BorderRadius.circular(70),
                       child: Image.memory(
                         base64.decode(state.profile['image']!),
                         fit: BoxFit.fill,
-                        height: 120,
-                        width: 120,
+                        height: 140,
+                        width: 140,
                       ),
                     ),
                   ),

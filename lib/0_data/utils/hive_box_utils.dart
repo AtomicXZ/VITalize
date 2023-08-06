@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/models/attendance.dart';
 import 'package:vtop_app/0_data/models/period.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:vtop_app/0_data/models/period.dart';
 
 class PeriodCard extends StatelessWidget {

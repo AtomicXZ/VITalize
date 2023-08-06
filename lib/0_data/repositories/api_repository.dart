@@ -1,14 +1,13 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-
+import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/models/attendance.dart';
 import 'package:vtop_app/0_data/models/marks.dart';
 import 'package:vtop_app/0_data/models/periods.dart';
 import 'package:vtop_app/0_data/utils/attendance_parser.dart';
 import 'package:vtop_app/0_data/utils/marks_parser.dart';
 import 'package:vtop_app/0_data/utils/profile_parser.dart';
-import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/utils/sem_id_parser.dart';
 import 'package:vtop_app/0_data/utils/timetable_parser.dart';
 

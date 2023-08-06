@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:vtop_app/1_app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vtop_app/1_app/pages/attendance_page/cubit/attendance_page_cubit.dart';
 import 'package:vtop_app/1_app/pages/attendance_page/widgets/attendance_card.dart';

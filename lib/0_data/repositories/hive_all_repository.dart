@@ -1,15 +1,15 @@
 import 'dart:io';
 
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:vtop_app/0_data/constants.dart';
 import 'package:vtop_app/0_data/models/attendance.dart';
 import 'package:vtop_app/0_data/models/periods.dart';
-import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
 import 'package:vtop_app/0_data/repositories/api_repository.dart';
+import 'package:vtop_app/0_data/utils/hive_box_utils.dart';
 
 class HiveAllRepository {
   APIRepository apiRepository = APIRepository();
+
   Future<void> get getAllFromApiAndCache async {
     Box<String> profileBox = Hive.box<String>(profileBoxName);
     Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);

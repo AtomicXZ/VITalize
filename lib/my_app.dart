@@ -1,12 +1,12 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:vtop_app/1_app/core/routes/routes.dart';
 import 'package:vtop_app/1_app/core/theme/vitalise_theme.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return DynamicColorBuilder(

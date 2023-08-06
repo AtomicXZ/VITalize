@@ -7,5 +7,6 @@ class SemesterIDsMenuInitial extends SemesterIDsMenuState {}
 
 class SemesterIDsMenuLoaded extends SemesterIDsMenuState {
   final Map<dynamic, String> semIDs;
+
   SemesterIDsMenuLoaded(this.semIDs);
 }

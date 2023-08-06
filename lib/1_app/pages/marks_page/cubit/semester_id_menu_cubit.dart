@@ -1,12 +1,12 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vtop_app/0_data/repositories/hive_sem_ids_repository.dart';
 
 part 'semester_id_menu_state.dart';
 
 class SemesterIDsMenuCubit extends Cubit<SemesterIDsMenuState> {
   HiveSemIDsRepository repository = HiveSemIDsRepository();
+
   SemesterIDsMenuCubit() : super(SemesterIDsMenuInitial());
 
   void getSemIDs() async {
