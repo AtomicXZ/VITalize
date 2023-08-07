@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vtop_app/1_app/pages/exam_schedule_page/widgets/exam_schedule_card.dart';
+import 'package:vtop_app/1_app/core/extensions/string_extension.dart';
 
 class ExamSchedulePageContent extends StatelessWidget {
   final Map examSchedule;
@@ -23,7 +24,7 @@ class ExamSchedulePageContent extends StatelessWidget {
               for (var text in examSchedule.keys)
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(text),
+                  child: Text((text as String).capitalize()),
                 ),
             ],
           ),

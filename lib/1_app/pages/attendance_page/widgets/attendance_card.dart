@@ -14,7 +14,6 @@ class AttendanceCard extends StatelessWidget {
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      color: theme.colorScheme.secondaryContainer,
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -24,10 +23,11 @@ class AttendanceCard extends StatelessWidget {
               attendance.name,
               style: theme.textTheme.titleMedium!.copyWith(
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
                 color: theme.colorScheme.secondary,
               ),
             ),
-            _gap(),
+            const SizedBox(height: 8),
             Row(
               children: [
                 Column(
@@ -37,7 +37,6 @@ class AttendanceCard extends StatelessWidget {
                       '${attendance.type} - ${attendance.slot}',
                       style: theme.textTheme.bodyMedium,
                     ),
-                    _gap(),
                     Text(
                       'Total Classes: ${attendance.totalClasses}',
                       style: theme.textTheme.bodySmall,

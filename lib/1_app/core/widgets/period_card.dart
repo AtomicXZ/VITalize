@@ -20,6 +20,7 @@ class PeriodCard extends StatelessWidget {
       titleWidget = Text(
         period.name,
         style: theme.textTheme.titleMedium!.copyWith(
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             color: theme.colorScheme.secondary,
             overflow: TextOverflow.ellipsis),
@@ -28,6 +29,7 @@ class PeriodCard extends StatelessWidget {
       titleWidget = Text(
         period.name,
         style: theme.textTheme.titleMedium!.copyWith(
+          fontSize: 18,
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.secondary,
         ),
@@ -36,7 +38,6 @@ class PeriodCard extends StatelessWidget {
 
     return Card(
       elevation: 2,
-      color: theme.colorScheme.secondaryContainer,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.all(20),
