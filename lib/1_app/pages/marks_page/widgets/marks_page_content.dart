@@ -40,6 +40,16 @@ class MarksPageContent extends StatelessWidget {
                   child: CircularProgressIndicator());
             } else if (state is MarksPageError) {
               return _buildErrorWidget(context);
+            } else if (state is MarksPageNoData) {
+              return CenterWidgetInColumn(
+                child: Text(
+                  'No marks available for this semester.',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontSize: 18),
+                ),
+              );
             } else if (state is MarksPageLoaded) {
               return _buildMarksList(state);
             } else {
@@ -81,22 +91,13 @@ class MarksPageContent extends StatelessWidget {
   }
 
   Widget _buildMarksList(MarksPageLoaded state) {
-    if (state.marks.isEmpty) {
-      return CenterWidgetInColumn(
-        child: Text(
-          'No marks available for this semester.',
-          style: const TextStyle().copyWith(fontSize: 16),
+    return Expanded(
+      child: ListView.builder(
+        itemCount: state.marks.length,
+        itemBuilder: (context, index) => MarksCard(
+          subject: state.marks.values.elementAt(index),
         ),
-      );
-    } else {
-      return Expanded(
-        child: ListView.builder(
-          itemCount: state.marks.length,
-          itemBuilder: (context, index) => MarksCard(
-            subject: state.marks.values.elementAt(index),
-          ),
-        ),
-      );
-    }
+      ),
+    );
   }
 }

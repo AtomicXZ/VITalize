@@ -17,7 +17,13 @@ class MarksPageCubit extends Cubit<MarksPageState> {
     var data = await repository.getMarksFromApi(semID);
     data.fold(
       (failure) => emit(MarksPageError()),
-      (marks) => emit(MarksPageLoaded(marks)),
+      (marks) {
+        if (marks.isEmpty) {
+          emit(MarksPageNoData());
+        } else {
+          emit(MarksPageLoaded(marks));
+        }
+      },
     );
   }
 

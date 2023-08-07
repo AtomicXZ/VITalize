@@ -25,6 +25,12 @@ class ExamSchedulePage extends StatelessWidget {
         builder: (context, state) {
       if (state is ExamScheduleInitial) {
         return const CenteredCircularProgressBar();
+      } else if (state is ExamScheduleNoData) {
+        return Center(
+            child: Text(
+          'No Exams Scheduled for Current Sem.',
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18),
+        ));
       } else if (state is ExamScheduleLoaded) {
         return ExamSchedulePageContent(examSchedule: state.examSchedule);
       } else {

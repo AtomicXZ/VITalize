@@ -5,6 +5,8 @@ sealed class ExamScheduleState {}
 
 final class ExamScheduleInitial extends ExamScheduleState {}
 
+final class ExamScheduleNoData extends ExamScheduleState {}
+
 final class ExamScheduleLoaded extends ExamScheduleState {
   final Map examSchedule;
 

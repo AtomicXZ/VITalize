@@ -35,7 +35,8 @@ class AttendancePage extends StatelessWidget {
           return Center(
               child: Text(
             'No Attendance in current semester yet.',
-            style: const TextStyle().copyWith(fontSize: 16),
+            style:
+                Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18),
           ));
         } else {
           return const Placeholder();
