@@ -80,6 +80,16 @@ class APIRepository {
     }
   }
 
+  Future<Map> getExamSchedule(String username, String password) async {
+    final http.Response resp = await http.post(Uri.parse(examScheduleURL),
+        body: getPostBody(username, password));
+    if (resp.statusCode == 200) {
+      return jsonDecode(resp.body);
+    } else {
+      return {};
+    }
+  }
+
   Future<Map<String, Map<String, dynamic>>> getAll(
       String username, String password) async {
     final http.Response resp = await http.post(Uri.parse(allURL),
@@ -93,6 +103,7 @@ class APIRepository {
       all['attendance'] = parseAttendance(body['attendance']);
       all['semIDs'] = parseSemID(body['semIDs']);
       all['grades'] = body['grades'];
+      all['examSchedule'] = body['examSchedule'];
       return all;
     } else {
       return {};

@@ -36,6 +36,7 @@ Future<void> openAllBoxes() async {
   await Hive.openBox<Attendance>(attendanceBoxName);
   await Hive.openBox<String>(semIDsBoxName);
   await Hive.openBox(gradesBoxName);
+  await Hive.openBox(examScheduleBoxName);
 }
 
 void registerAllAdapters() {
@@ -44,18 +45,24 @@ void registerAllAdapters() {
   Hive.registerAdapter(AttendanceAdapter());
 }
 
-void emptyAllBoxes() {
+void emptyAllBoxesExceptUser() {
   Box<String> profileBox = Hive.box<String>(profileBoxName);
   Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);
   Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
   Box<String> semIDsBox = Hive.box<String>(semIDsBoxName);
   Box gradesBox = Hive.box(gradesBoxName);
-  Box<String> userBox = Hive.box(userBoxName);
+  Box examScheduleBox = Hive.box(examScheduleBoxName);
 
   profileBox.clear();
   timetableBox.clear();
   attendanceBox.clear();
-  userBox.clear();
   gradesBox.clear();
   semIDsBox.clear();
+  examScheduleBox.clear();
+}
+
+void emptyAllBoxes() {
+  emptyAllBoxesExceptUser();
+  Box<String> userBox = Hive.box(userBoxName);
+  userBox.clear();
 }

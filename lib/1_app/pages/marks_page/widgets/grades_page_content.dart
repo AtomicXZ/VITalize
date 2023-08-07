@@ -9,6 +9,7 @@ class GradesPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       children: [
         Text(
           'Overview',
@@ -29,7 +30,7 @@ class GradesPageContent extends StatelessWidget {
                   title: Text(
                     'CGPA',
                     style: theme.textTheme.headlineSmall!.copyWith(
-                        fontSize: 20, color: theme.colorScheme.secondary),
+                        fontSize: 18, color: theme.colorScheme.secondary),
                   ),
                   trailing: Text(grades['cgpa'],
                       style:
@@ -39,7 +40,7 @@ class GradesPageContent extends StatelessWidget {
                   title: Text(
                     'Credits Earned',
                     style: theme.textTheme.headlineSmall!.copyWith(
-                        fontSize: 20, color: theme.colorScheme.secondary),
+                        fontSize: 18, color: theme.colorScheme.secondary),
                   ),
                   trailing: Text(grades['creditsEarned'],
                       style:
@@ -69,12 +70,10 @@ class GradesPageContent extends StatelessWidget {
                   ListTile(
                     title: Text(
                       subject['name'],
-                      style: theme.textTheme.headlineSmall!.copyWith(
-                          fontSize: 16, color: theme.colorScheme.secondary),
+                      style: theme.textTheme.bodyMedium,
                     ),
                     trailing: Text(subject['grade'],
-                        style:
-                            theme.textTheme.bodyMedium!.copyWith(fontSize: 16)),
+                        style: theme.textTheme.bodyMedium),
                   ),
               ],
             ),

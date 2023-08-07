@@ -47,6 +47,12 @@ final routes = GoRouter(
               child: ScaffoldWithNavbar(page: marksPageConfig)),
         ),
         GoRoute(
+          name: examSchedulePageConfig.name,
+          path: '$_root/${examSchedulePageConfig.name}',
+          pageBuilder: (context, state) => NoTransitionPage(
+              child: ScaffoldWithNavbar(page: examSchedulePageConfig)),
+        ),
+        GoRoute(
           name: profilePageConfig.name,
           path: '$_root/${profilePageConfig.name}',
           pageBuilder: (context, state) => NoTransitionPage(

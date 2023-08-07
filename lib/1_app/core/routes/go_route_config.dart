@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:vtop_app/1_app/pages/attendance_page/attendance_page.dart';
+import 'package:vtop_app/1_app/pages/exam_schedule_page/exam_schedule_page.dart';
 import 'package:vtop_app/1_app/pages/home_page/homepage.dart';
 import 'package:vtop_app/1_app/pages/login_page/login_page.dart';
 import 'package:vtop_app/1_app/pages/marks_page/marks_page.dart';
@@ -25,6 +26,7 @@ final List<GoRouterConfig> allNavBarConfigs = [
   homePageConfig,
   attendancePageConfig,
   marksPageConfig,
+  examSchedulePageConfig,
   profilePageConfig,
 ];
 
@@ -39,8 +41,8 @@ final homePageConfig = GoRouterConfig(
   child: const HomePageProvider(),
 );
 final attendancePageConfig = GoRouterConfig(
-  icon: Icons.calendar_today_outlined,
-  selectedIcon: Icons.calendar_today_rounded,
+  icon: Icons.bookmark_border_rounded,
+  selectedIcon: Icons.bookmark,
   name: 'Attendance',
   child: const AttendancePageProvider(),
 );
@@ -50,6 +52,11 @@ final marksPageConfig = GoRouterConfig(
   name: 'Marks',
   child: const MarksPageProvider(),
 );
+final examSchedulePageConfig = GoRouterConfig(
+    icon: Icons.calendar_today_outlined,
+    selectedIcon: Icons.calendar_today_rounded,
+    name: 'Exam',
+    child: const ExamSchedulePageProvider());
 final profilePageConfig = GoRouterConfig(
   icon: Icons.person_outline_rounded,
   selectedIcon: Icons.person_rounded,

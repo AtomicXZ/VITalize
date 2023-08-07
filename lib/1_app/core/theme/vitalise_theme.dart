@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'custom_color.dart';
 
 const Color primaryColor = Color(0xFF795548);
-const String fontPreference = 'Outfit';
+const String fontPreference = 'Lato';
 
 ElevatedButtonThemeData elevatedButtonTheme(
   BuildContext context,
