@@ -72,7 +72,8 @@ class GradesPageContent extends StatelessWidget {
                       subject['name'],
                       style: theme.textTheme.bodyMedium,
                     ),
-                    trailing: Text(subject['grade'],
+                    trailing: Text(
+                        '${subject['grade']} / ${subject['credits']}',
                         style: theme.textTheme.bodyMedium),
                   ),
               ],

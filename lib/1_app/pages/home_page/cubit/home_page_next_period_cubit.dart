@@ -16,7 +16,7 @@ class HomePageNextPeriodCubit extends Cubit<HomePageNextPeriodState> {
 
     if (periods.isNotEmpty) {
       for (var period in periods) {
-        if (period.startTime.compareTo(getCurrentTime) > 0) {
+        if (period.endTime.compareTo(getCurrentTime) > 0) {
           emit(HomePageNextPeriod(period));
           return;
         }
