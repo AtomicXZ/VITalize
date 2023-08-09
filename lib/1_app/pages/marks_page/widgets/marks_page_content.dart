@@ -14,21 +14,24 @@ class MarksPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        DropdownMenu(
-          onSelected: (value) =>
-              BlocProvider.of<MarksPageCubit>(context).getMarks(value),
-          label: const Text(
-            'Select Semester',
-            style: TextStyle(fontSize: 16),
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16),
+        Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: DropdownMenu(
+            onSelected: (value) =>
+                BlocProvider.of<MarksPageCubit>(context).getMarks(value),
+            label: const Text(
+              'Select Semester',
+              style: TextStyle(fontSize: 16),
             ),
+            inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            dropdownMenuEntries: state.semIDs.entries
+                .map((e) => DropdownMenuEntry(value: e.key, label: e.value))
+                .toList(),
           ),
-          dropdownMenuEntries: state.semIDs.entries
-              .map((e) => DropdownMenuEntry(value: e.key, label: e.value))
-              .toList(),
         ),
         const SizedBox(height: 8),
         BlocBuilder<MarksPageCubit, MarksPageState>(
