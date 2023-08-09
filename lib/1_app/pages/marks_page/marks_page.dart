@@ -43,8 +43,14 @@ class MarksPage extends StatelessWidget {
                   fontWeight: FontWeight.w300,
                 ),
             unselectedLabelColor: Theme.of(context).colorScheme.secondary,
-            indicatorColor: Theme.of(context).colorScheme.inversePrimary,
+            splashBorderRadius: BorderRadius.circular(80),
+            dividerColor: Colors.transparent,
             indicatorSize: TabBarIndicatorSize.tab,
+            indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(80.0),
+              color:
+                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.4),
+            ),
             tabs: const [
               Padding(
                 padding: EdgeInsets.all(8.0),
