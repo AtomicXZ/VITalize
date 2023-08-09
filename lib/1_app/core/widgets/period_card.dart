@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:vtop_app/0_data/models/period.dart';
 
@@ -54,7 +55,7 @@ class PeriodCard extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  Icons.location_on_rounded,
+                  FluentIcons.location_16_filled,
                   size: 18,
                   color: theme.colorScheme.secondary,
                 ),
@@ -65,7 +66,7 @@ class PeriodCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 Icon(
-                  Icons.alarm,
+                  FluentIcons.clock_alarm_16_filled,
                   size: 18,
                   color: theme.colorScheme.secondary,
                 ),

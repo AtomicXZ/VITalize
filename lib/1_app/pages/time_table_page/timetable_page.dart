@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +45,11 @@ class TimetablePage extends StatelessWidget {
         leading: SizedBox(
           child: IconButton(
             onPressed: () => context.pop(),
-            icon: const Icon(Icons.arrow_back_ios_new_rounded),
+            icon: Icon(
+              FluentIcons.arrow_circle_left_20_filled,
+              color: theme.colorScheme.secondary,
+              size: 30,
+            ),
           ),
         ),
         title: const Text('Timetable'),

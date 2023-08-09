@@ -46,6 +46,7 @@ dependencies:
   either_dart: ^1.0.0
   dynamic_color: ^1.6.6
   intl: ^0.18.1
+  fluentui_system_icons: ^1.1.208
 
 dev_dependencies:
   flutter_test:

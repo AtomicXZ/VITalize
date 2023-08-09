@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vtop_app/1_app/core/widgets/center_widget_in_column.dart';
@@ -72,7 +73,7 @@ class MarksPageContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
-              Icons.error,
+              FluentIcons.alert_24_regular,
               color: Colors.redAccent,
               size: 60,
             ),

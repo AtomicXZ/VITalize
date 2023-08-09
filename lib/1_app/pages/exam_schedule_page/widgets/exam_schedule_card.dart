@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -46,7 +47,7 @@ class ExamScheduleCard extends StatelessWidget {
                   const SizedBox(height: 8),
                   ListTile(
                     leading: Icon(
-                      Icons.edit_calendar_sharp,
+                      FluentIcons.calendar_16_filled,
                       size: 18,
                       color: theme.colorScheme.secondary,
                     ),
@@ -61,7 +62,7 @@ class ExamScheduleCard extends StatelessWidget {
                   ),
                   ListTile(
                     leading: Icon(
-                      Icons.alarm,
+                      FluentIcons.clock_alarm_16_filled,
                       size: 18,
                       color: theme.colorScheme.secondary,
                     ),
@@ -77,7 +78,7 @@ class ExamScheduleCard extends StatelessWidget {
                   ),
                   ListTile(
                     leading: Icon(
-                      Icons.location_on_rounded,
+                      FluentIcons.location_16_filled,
                       size: 18,
                       color: theme.colorScheme.secondary,
                     ),

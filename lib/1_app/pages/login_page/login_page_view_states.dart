@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vtop_app/1_app/pages/login_page/cubit/login_page_cubit.dart';
@@ -24,7 +25,7 @@ class LoginForm extends StatelessWidget {
             hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
-            prefixIcon: const Icon(Icons.person),
+            prefixIcon: const Icon(FluentIcons.person_16_filled),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
             ),
@@ -41,7 +42,7 @@ class LoginForm extends StatelessWidget {
             hintStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
-            prefixIcon: const Icon(Icons.lock_outline_rounded),
+            prefixIcon: const Icon(FluentIcons.password_16_filled),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
             ),

@@ -1,3 +1,4 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 
 import 'package:vtop_app/1_app/pages/attendance_page/attendance_page.dart';
@@ -35,31 +36,31 @@ final loginPageConfig = GoRouterConfig(
   child: const LoginPageProvider(),
 );
 final homePageConfig = GoRouterConfig(
-  icon: Icons.home_outlined,
-  selectedIcon: Icons.home_rounded,
+  icon: FluentIcons.home_24_regular,
+  selectedIcon: FluentIcons.home_24_filled,
   name: 'Home',
   child: const HomePageProvider(),
 );
 final attendancePageConfig = GoRouterConfig(
-  icon: Icons.bookmark_border_rounded,
-  selectedIcon: Icons.bookmark,
+  icon: FluentIcons.bookmark_24_regular,
+  selectedIcon: FluentIcons.bookmark_24_filled,
   name: 'Attendance',
   child: const AttendancePageProvider(),
 );
 final marksPageConfig = GoRouterConfig(
-  icon: Icons.calculate_outlined,
-  selectedIcon: Icons.calculate_rounded,
+  icon: FluentIcons.number_symbol_24_regular,
+  selectedIcon: FluentIcons.number_symbol_24_filled,
   name: 'Marks',
   child: const MarksPageProvider(),
 );
 final examSchedulePageConfig = GoRouterConfig(
-    icon: Icons.calendar_today_outlined,
-    selectedIcon: Icons.calendar_today_rounded,
+    icon: FluentIcons.calendar_24_regular,
+    selectedIcon: FluentIcons.calendar_24_filled,
     name: 'Exam',
     child: const ExamSchedulePageProvider());
 final profilePageConfig = GoRouterConfig(
-  icon: Icons.person_outline_rounded,
-  selectedIcon: Icons.person_rounded,
+  icon: FluentIcons.person_24_regular,
+  selectedIcon: FluentIcons.person_24_filled,
   name: 'Profile',
   child: const ProfilePageProvider(),
 );
