@@ -71,6 +71,4 @@ class AttendanceCard extends StatelessWidget {
       ),
     );
   }
-
-  Widget _gap() => const SizedBox(height: 4);
 }

@@ -115,7 +115,4 @@ class ExamScheduleCard extends StatelessWidget {
         .format(DateFormat('hh:mm a').parse(time))
         .toString();
   }
-
-  Widget _gap() => const SizedBox(height: 4);
-  Widget _horizontalGap() => const SizedBox(height: 8);
 }
