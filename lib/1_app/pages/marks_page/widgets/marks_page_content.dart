@@ -73,7 +73,7 @@ class MarksPageContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
-              FluentIcons.alert_24_regular,
+              FluentIcons.error_circle_24_filled,
               color: Colors.redAccent,
               size: 60,
             ),
