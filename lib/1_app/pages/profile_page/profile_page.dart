@@ -57,30 +57,18 @@ class ProfilePage extends StatelessWidget {
                   ),
                   Positioned(
                     right: 0,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(6),
-                      onTap: () {
-                        emptyAllBoxes();
-                        context.goNamed(loginPageConfig.name);
-                      },
-                      onLongPress: () =>
-                          ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
-                          content: Text(
-                            'Logout',
-                            style: const TextStyle().copyWith(
-                              color: Theme.of(context).colorScheme.onSecondary,
-                            ),
-                          ),
-                          duration: const Duration(milliseconds: 500),
+                    child: Tooltip(
+                      message: 'Logout',
+                      child: IconButton(
+                        onPressed: () {
+                          emptyAllBoxes();
+                          context.goNamed(loginPageConfig.name);
+                        },
+                        icon: Icon(
+                          FluentIcons.arrow_exit_20_filled,
+                          size: 30,
+                          color: Theme.of(context).colorScheme.secondary,
                         ),
-                      ),
-                      child: Icon(
-                        FluentIcons.arrow_exit_20_filled,
-                        size: 30,
-                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),
                   ),

@@ -46,33 +46,23 @@ class HomePage extends StatelessWidget {
                       color: Theme.of(context).colorScheme.onSurface,
                     ),
               ),
-              InkWell(
-                borderRadius: BorderRadius.circular(15),
-                onTap: () async {
-                  BlocProvider.of<HomePageNextPeriodCubit>(context)
-                      .emitLoadingState();
-                  BlocProvider.of<HomePageCubit>(context).emitLoadingState();
-                  await cacheAllData();
-                  BlocProvider.of<HomePageNextPeriodCubit>(context)
-                      .getNextPeriod();
-                  BlocProvider.of<HomePageCubit>(context).todaysTimetable();
-                },
-                onLongPress: () => ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
-                    content: Text(
-                      'Refresh all data.',
-                      style: const TextStyle().copyWith(
-                        color: Theme.of(context).colorScheme.onSecondary,
-                      ),
-                    ),
-                    duration: const Duration(milliseconds: 500),
+              Tooltip(
+                message: 'Refresh all data',
+                child: IconButton(
+                  onPressed: () async {
+                    BlocProvider.of<HomePageNextPeriodCubit>(context)
+                        .emitLoadingState();
+                    BlocProvider.of<HomePageCubit>(context).emitLoadingState();
+                    await cacheAllData();
+                    BlocProvider.of<HomePageNextPeriodCubit>(context)
+                        .getNextPeriod();
+                    BlocProvider.of<HomePageCubit>(context).todaysTimetable();
+                  },
+                  icon: Icon(
+                    FluentIcons.arrow_circle_down_32_filled,
+                    size: 30,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
-                ),
-                child: Icon(
-                  FluentIcons.arrow_circle_down_32_filled,
-                  size: 30,
-                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
             ],
