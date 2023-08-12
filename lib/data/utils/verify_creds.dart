@@ -1,12 +1,27 @@
+import 'package:either_dart/either.dart';
 import 'package:http/http.dart' as http;
 import 'package:vitalize/data/constants.dart';
+import 'package:vitalize/data/utils/failure.dart';
 
-Future<bool> isValid(String username, String password) async {
+Future<Either<ServerFailure, bool>> isValid(
+    String username, String password) async {
   var req = await http.post(Uri.parse(verifyURL),
       body: getPostBody(username, password));
   if (req.statusCode == 200) {
-    return true;
+    return const Right(true);
+  } else if (req.statusCode == 403) {
+    return Left(
+      ServerFailure(
+        message: 'Unauthorized Access',
+        subtitle: 'You are not authorized to use this app.',
+      ),
+    );
   } else {
-    return false;
+    return Left(
+      ServerFailure(
+        message: 'Invalid Credentials',
+        subtitle: 'Please check your password and try again.',
+      ),
+    );
   }
 }

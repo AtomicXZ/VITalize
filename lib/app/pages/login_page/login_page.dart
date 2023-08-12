@@ -61,8 +61,7 @@ class LoginPage extends StatelessWidget {
                         _showPopup(context, 'Server is offline',
                             'Try again later or try contacting the developer.');
                       } else if (state.status == LoginStatus.failure) {
-                        _showPopup(context, 'Invalid credentials',
-                            'Please check your credentials and try again.');
+                        _showPopup(context, state.message, state.subtitle);
                       }
                     },
                     child: BlocBuilder<LoginPageCubit, LoginPageState>(

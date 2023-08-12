@@ -1,6 +1,8 @@
+import 'package:either_dart/src/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitalize/data/constants.dart';
+import 'package:vitalize/data/utils/failure.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
 import 'package:vitalize/data/utils/verify_creds.dart';
 import 'package:vitalize/app/core/utils/cache_all_data.dart';
@@ -25,13 +27,24 @@ class LoginPageCubit extends Cubit<LoginPageState> {
       emit(state.copyWith(status: LoginStatus.serverOffline));
     }
 
-    bool credsAreValid = await isValid(state.username, state.password);
-    if (credsAreValid) {
+    Either<ServerFailure, bool> credsAreValid =
+        await isValid(state.username, state.password);
+
+    credsAreValid.fold(
+        (left) => emit(
+              state.copyWith(
+                status: LoginStatus.failure,
+                message: left.message,
+                subtitle: left.subtitle,
+              ),
+            ), (right) async {
       await initializeApp();
-      emit(state.copyWith(status: LoginStatus.success));
-    } else {
-      emit(state.copyWith(status: LoginStatus.failure));
-    }
+      emit(
+        state.copyWith(
+          status: LoginStatus.success,
+        ),
+      );
+    });
   }
 
   void invalidCredentialsOKbuttonPressed() {

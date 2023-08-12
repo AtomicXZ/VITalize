@@ -1,6 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vitalize/app/core/widgets/animated_column.dart';
 import 'package:vitalize/app/pages/login_page/cubit/login_page_cubit.dart';
 
 class LoginForm extends StatelessWidget {
@@ -8,7 +9,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return AnimatedColumn(
       children: [
         Text(
           "Enter your Reg. ID and password to continue.",

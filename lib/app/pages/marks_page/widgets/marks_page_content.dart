@@ -17,7 +17,7 @@ class MarksPageContent extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 4),
+          padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
           child: DropdownMenu(
             onSelected: (value) =>
                 BlocProvider.of<MarksPageCubit>(context).getMarks(value),
