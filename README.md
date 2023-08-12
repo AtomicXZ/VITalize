@@ -1,4 +1,4 @@
-# vtop_app
+# vitalize
 
 A new Flutter project.
 

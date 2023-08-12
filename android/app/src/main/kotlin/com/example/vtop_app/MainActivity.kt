@@ -1,4 +1,4 @@
-package com.example.vtop_app
+package com.example.vitalize
 
 import io.flutter.embedding.android.FlutterActivity
 
