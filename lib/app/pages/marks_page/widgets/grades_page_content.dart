@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitalize/app/core/widgets/animated_column.dart';
 
 class GradesPageContent extends StatelessWidget {
   final Map grades;
@@ -23,8 +24,7 @@ class GradesPageContent extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: AnimatedColumn(
               children: [
                 ListTile(
                   title: Text(
@@ -63,8 +63,7 @@ class GradesPageContent extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: AnimatedColumn(
               children: [
                 for (var subject in (grades['subjects'] as Map).values)
                   ListTile(

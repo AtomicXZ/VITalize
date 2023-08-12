@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitalize/app/core/widgets/animated_column.dart';
 import 'package:vitalize/data/models/period.dart';
 import 'package:vitalize/app/core/widgets/period_card.dart';
 
@@ -9,10 +10,7 @@ class PeriodsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        for (Period period in periods) PeriodCard(period: period),
-      ],
-    );
+    return AnimatedColumn(
+        children: [for (Period period in periods) PeriodCard(period: period)]);
   }
 }

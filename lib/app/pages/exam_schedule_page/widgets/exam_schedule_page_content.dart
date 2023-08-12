@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vitalize/app/pages/exam_schedule_page/widgets/exam_schedule_card.dart';
+import 'package:vitalize/app/pages/exam_schedule_page/widgets/exam_schedule_card_list.dart';
 import 'package:vitalize/app/core/extensions/string_extension.dart';
 
 class ExamSchedulePageContent extends StatelessWidget {
@@ -39,7 +39,7 @@ class ExamSchedulePageContent extends StatelessWidget {
             child: TabBarView(
               children: [
                 for (var subject in examSchedule.values)
-                  ExamScheduleCard(subject),
+                  ExamScheduleCardList(subject),
               ],
             ),
           ),

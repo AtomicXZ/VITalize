@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:vitalize/app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vitalize/app/pages/attendance_page/cubit/attendance_page_cubit.dart';
 import 'package:vitalize/app/pages/attendance_page/widgets/attendance_card.dart';
@@ -26,10 +27,23 @@ class AttendancePage extends StatelessWidget {
         if (state is AttendancePageInitial) {
           return const CenteredCircularProgressBar();
         } else if (state is AttendancePageLoaded) {
-          return ListView.builder(
-            itemCount: state.attendance.length,
-            itemBuilder: (context, index) => AttendanceCard(
-                attendance: state.attendance.values.elementAt(index)),
+          return AnimationLimiter(
+            child: ListView.builder(
+              itemCount: state.attendance.length,
+              itemBuilder: (context, index) =>
+                  AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 250),
+                child: SlideAnimation(
+                  verticalOffset: 44,
+                  child: FadeInAnimation(
+                    child: AttendanceCard(
+                      attendance: state.attendance.values.elementAt(index),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           );
         } else if (state is AttendancePageNoAttendanceInThisSem) {
           return Center(

@@ -25,7 +25,7 @@ class TimetableCubit extends Cubit<TimetableState> {
 
   void timetableByDay(String day) async {
     emit(TimetableLoading());
-    List<Period> periods = (await repository.getTimetableFromBox)[day]!.periods;
-    emit(TimetablePeriods(periods));
+    emit(
+        TimetablePeriods((await repository.getTimetableFromBox)[day]!.periods));
   }
 }
