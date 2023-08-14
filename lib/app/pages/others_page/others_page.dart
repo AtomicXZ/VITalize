@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/widgets/animated_column.dart';
+import 'package:vitalize/app/pages/others_page/widgets/hostel_wifi_card.dart';
 import 'package:vitalize/app/pages/others_page/widgets/navigator_pressable_card.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
 
@@ -32,6 +34,7 @@ class OthersPage extends StatelessWidget {
               page: examSchedulePageConfig,
               title: 'Exam Schedule',
               subtitle: 'Exam Schedule for current semester.'),
+          const HostelWifiCard(),
         ],
       ),
     );

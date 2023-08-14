@@ -23,6 +23,10 @@ const String gradesURL = '$baseURL$gradesEndPoint';
 const String examScheduleURL = '$baseURL$examScheduleEndPoint';
 const String allURL = '$baseURL$allEndPoint';
 
+// hostel sophos client urls
+const String hostelWifiLoginURL = 'https://hfw.vitap.ac.in:8090/login.xml';
+const String hostelWifiLogoutURL = 'https://hfw.vitap.ac.in:8090/logout.xml';
+
 // hive box names
 const String userBoxName = 'userBox';
 const String timetableBoxName = 'timetableBox';
