@@ -35,3 +35,8 @@ const String profileBoxName = 'profileBox';
 const String semIDsBoxName = 'semIDsBox';
 const String gradesBoxName = 'gradesBox';
 const String examScheduleBoxName = 'examScheduleBox';
+
+// last updated time keys
+const String allDataLastUpdated = 'allDataLastUpdated';
+const String attendanceLastUpdated = 'attendanceLastUpdated';
+const String gradesLastUpdated = 'gradesLastUpdated';

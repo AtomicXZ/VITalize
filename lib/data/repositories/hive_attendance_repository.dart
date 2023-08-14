@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vitalize/app/core/utils/time_utils.dart';
 import 'package:vitalize/data/constants.dart';
 import 'package:vitalize/data/models/attendance.dart';
 import 'package:vitalize/data/repositories/api_repository.dart';
@@ -24,10 +25,12 @@ class HiveAttendanceRepository {
   Future<Map<dynamic, Attendance>> get getAttendanceFromBox async {
     Box<Attendance> attendanceBox = Hive.box(attendanceBoxName);
     Box<String> userBox = Hive.box(userBoxName);
-    String day = DateTime.now().day.toString();
+    String todaysDate = getTodaysDate;
 
-    if (attendanceBox.isEmpty || userBox.get('attendanceLastUpdated') != day) {
-      userBox.put('attendanceLastUpdated', day);
+    if (attendanceBox.isEmpty ||
+        userBox.get(attendanceLastUpdated) != todaysDate ||
+        userBox.get(allDataLastUpdated) != todaysDate) {
+      userBox.put(attendanceLastUpdated, todaysDate);
       return getAttendanceFromApiAndCache;
     }
 

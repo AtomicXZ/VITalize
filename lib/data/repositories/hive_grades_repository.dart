@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vitalize/app/core/utils/time_utils.dart';
 import 'package:vitalize/data/constants.dart';
 import 'package:vitalize/data/repositories/api_repository.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
@@ -23,10 +24,12 @@ class HiveGradesRepository {
   Future<Map> get getGradesFromBox async {
     Box gradesBox = Hive.box(gradesBoxName);
     Box<String> userBox = Hive.box(userBoxName);
-    String day = DateTime.now().day.toString();
+    String todaysDate = getTodaysDate;
 
-    if (gradesBox.isEmpty || userBox.get('gradesLastUpdated') != day) {
-      userBox.put('gradesLastUpdated', day);
+    if (gradesBox.isEmpty ||
+        userBox.get(gradesLastUpdated) != todaysDate ||
+        userBox.get(allDataLastUpdated) != todaysDate) {
+      userBox.put(gradesLastUpdated, todaysDate);
       return getGradesFromApiAndCache;
     }
 
