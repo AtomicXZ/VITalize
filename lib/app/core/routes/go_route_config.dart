@@ -6,6 +6,7 @@ import 'package:vitalize/app/pages/exam_schedule_page/exam_schedule_page.dart';
 import 'package:vitalize/app/pages/home_page/homepage.dart';
 import 'package:vitalize/app/pages/login_page/login_page.dart';
 import 'package:vitalize/app/pages/marks_page/marks_page.dart';
+import 'package:vitalize/app/pages/others_page/others_page.dart';
 import 'package:vitalize/app/pages/profile_page/profile_page.dart';
 import 'package:vitalize/app/pages/time_table_page/timetable_page.dart';
 
@@ -27,8 +28,7 @@ final List<GoRouterConfig> allNavBarConfigs = [
   homePageConfig,
   attendancePageConfig,
   marksPageConfig,
-  examSchedulePageConfig,
-  profilePageConfig,
+  othersPageConfig,
 ];
 
 final loginPageConfig = GoRouterConfig(
@@ -56,13 +56,19 @@ final marksPageConfig = GoRouterConfig(
 final examSchedulePageConfig = GoRouterConfig(
     icon: FluentIcons.calendar_24_regular,
     selectedIcon: FluentIcons.calendar_24_filled,
-    name: 'Exam',
+    name: 'ExamSchedule',
     child: const ExamSchedulePageProvider());
 final profilePageConfig = GoRouterConfig(
   icon: FluentIcons.person_24_regular,
   selectedIcon: FluentIcons.person_24_filled,
   name: 'Profile',
   child: const ProfilePageProvider(),
+);
+final othersPageConfig = GoRouterConfig(
+  icon: FluentIcons.more_circle_24_regular,
+  selectedIcon: FluentIcons.more_circle_24_filled,
+  name: 'Others',
+  child: const OthersPage(),
 );
 final timetablePageConfig = GoRouterConfig(
   name: 'Timetable',

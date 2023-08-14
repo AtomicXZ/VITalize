@@ -16,8 +16,10 @@ class MarksPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(8, 4, 8, 0),
+        ConstrainedBox(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.95,
+          ),
           child: DropdownMenu(
             onSelected: (value) =>
                 BlocProvider.of<MarksPageCubit>(context).getMarks(value),

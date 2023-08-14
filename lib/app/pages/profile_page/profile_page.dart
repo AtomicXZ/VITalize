@@ -1,12 +1,8 @@
 import 'dart:convert';
 
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:vitalize/app/core/widgets/animated_column.dart';
-import 'package:vitalize/data/utils/hive_box_utils.dart';
-import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vitalize/app/pages/profile_page/cubit/profile_page_cubit.dart';
 
@@ -44,37 +40,16 @@ class ProfilePage extends StatelessWidget {
           return SingleChildScrollView(
             child: AnimatedColumn(
               children: [
-                Stack(
-                  children: [
-                    Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(70),
-                        child: Image.memory(
-                          base64.decode(state.profile['image']!),
-                          fit: BoxFit.fill,
-                          height: 140,
-                          width: 140,
-                        ),
-                      ),
+                Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(70),
+                    child: Image.memory(
+                      base64.decode(state.profile['image']!),
+                      fit: BoxFit.fill,
+                      height: 140,
+                      width: 140,
                     ),
-                    Positioned(
-                      right: 0,
-                      child: Tooltip(
-                        message: 'Logout',
-                        child: IconButton(
-                          onPressed: () {
-                            emptyAllBoxes();
-                            context.goNamed(loginPageConfig.name);
-                          },
-                          icon: Icon(
-                            FluentIcons.arrow_exit_20_filled,
-                            size: 30,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 const SizedBox(height: 32),
                 for (var field in fields)

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/utils/is_first_launch.dart';
+import 'package:vitalize/app/core/widgets/scaffold_with_appbar.dart';
 import 'package:vitalize/app/core/widgets/scaffold_with_navbar.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -47,23 +48,31 @@ final routes = GoRouter(
               child: ScaffoldWithNavbar(page: marksPageConfig)),
         ),
         GoRoute(
-          name: examSchedulePageConfig.name,
-          path: '$_root/${examSchedulePageConfig.name}',
+          name: othersPageConfig.name,
+          path: '$_root/${othersPageConfig.name}',
           pageBuilder: (context, state) => NoTransitionPage(
-              child: ScaffoldWithNavbar(page: examSchedulePageConfig)),
-        ),
-        GoRoute(
-          name: profilePageConfig.name,
-          path: '$_root/${profilePageConfig.name}',
-          pageBuilder: (context, state) => NoTransitionPage(
-              child: ScaffoldWithNavbar(page: profilePageConfig)),
+              child: ScaffoldWithNavbar(page: othersPageConfig)),
         ),
       ],
     ),
     GoRoute(
+      name: examSchedulePageConfig.name,
+      path: '$_root/${examSchedulePageConfig.name}',
+      builder: (context, state) => ScaffoldWithAppbar(
+        page: examSchedulePageConfig,
+        title: 'Exam Schedule',
+      ),
+    ),
+    GoRoute(
+      name: profilePageConfig.name,
+      path: '$_root/${profilePageConfig.name}',
+      builder: (context, state) => ScaffoldWithAppbar(page: profilePageConfig),
+    ),
+    GoRoute(
       name: timetablePageConfig.name,
       path: '$_root/${timetablePageConfig.name}',
-      builder: (context, state) => timetablePageConfig.child,
+      builder: (context, state) =>
+          ScaffoldWithAppbar(page: timetablePageConfig),
     ),
     GoRoute(
       name: loginPageConfig.name,
