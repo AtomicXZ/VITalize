@@ -27,8 +27,8 @@ class HiveGradesRepository {
     String todaysDate = getTodaysDate;
 
     if (gradesBox.isEmpty ||
-        userBox.get(gradesLastUpdated) != todaysDate ||
-        userBox.get(allDataLastUpdated) != todaysDate) {
+        (userBox.get(gradesLastUpdated) != todaysDate &&
+            userBox.get(allDataLastUpdated) != todaysDate)) {
       userBox.put(gradesLastUpdated, todaysDate);
       return getGradesFromApiAndCache;
     }

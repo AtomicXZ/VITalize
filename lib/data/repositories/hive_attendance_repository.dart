@@ -28,8 +28,8 @@ class HiveAttendanceRepository {
     String todaysDate = getTodaysDate;
 
     if (attendanceBox.isEmpty ||
-        userBox.get(attendanceLastUpdated) != todaysDate ||
-        userBox.get(allDataLastUpdated) != todaysDate) {
+        (userBox.get(attendanceLastUpdated) != todaysDate &&
+            userBox.get(allDataLastUpdated) != todaysDate)) {
       userBox.put(attendanceLastUpdated, todaysDate);
       return getAttendanceFromApiAndCache;
     }
