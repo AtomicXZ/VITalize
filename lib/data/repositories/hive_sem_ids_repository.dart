@@ -10,10 +10,7 @@ class HiveSemIDsRepository {
     Box<String> box = Hive.box<String>(semIDsBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map<String, String> semIDs =
-          await apiRepository.getSemIDs(user['username']!, user['password']!);
+      Map<String, String> semIDs = await apiRepository.getSemIDs;
       if (semIDs.isNotEmpty) {
         box.putAll(semIDs);
         return semIDs;

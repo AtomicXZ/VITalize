@@ -6,7 +6,7 @@ import 'package:vitalize/data/utils/failure.dart';
 Future<Either<ServerFailure, bool>> isValid(
     String username, String password) async {
   var req = await http.post(Uri.parse(verifyURL),
-      body: getPostBody(username, password));
+      body: {'username': username, 'password': password});
   if (req.statusCode == 200) {
     return const Right(true);
   } else if (req.statusCode == 403) {

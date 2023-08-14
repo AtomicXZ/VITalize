@@ -20,9 +20,7 @@ class HiveAllRepository {
 
     try {
       if (await serverAvailable) {
-        Map<dynamic, String> user = getCreds;
-        Map<String, Map<String, dynamic>> all =
-            await apiRepository.getAll(user['username']!, user['password']!);
+        Map<String, Map<String, dynamic>> all = await apiRepository.getAll;
         if (all.isNotEmpty) {
           profileBox.putAll(all['profile']! as Map<String, String>);
           timetableBox.putAll(all['timetable']! as Map<String, Periods>);

@@ -26,7 +26,7 @@ Future<bool> get serverAvailable async {
 Map<dynamic, String> get getCreds {
   Box<String> userBox = Hive.box(userBoxName);
   Map<dynamic, String> userMap = userBox.toMap();
-  return userMap;
+  return {'username': userMap['username']!, 'password': userMap['password']!};
 }
 
 Future<void> openAllBoxes() async {

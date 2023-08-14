@@ -31,11 +31,3 @@ const String profileBoxName = 'profileBox';
 const String semIDsBoxName = 'semIDsBox';
 const String gradesBoxName = 'gradesBox';
 const String examScheduleBoxName = 'examScheduleBox';
-
-// api post body for requests
-Map<String, String> getPostBody(String username, String password) {
-  return {
-    'username': username,
-    'password': password,
-  };
-}

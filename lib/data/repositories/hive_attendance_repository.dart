@@ -11,10 +11,7 @@ class HiveAttendanceRepository {
     Box<Attendance> box = Hive.box<Attendance>(attendanceBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map<String, Attendance> attendance = await apiRepository.getAttendance(
-          user['username']!, user['password']!);
+      Map<String, Attendance> attendance = await apiRepository.getAttendance;
       if (attendance.isNotEmpty) {
         box.putAll(attendance);
         return attendance;

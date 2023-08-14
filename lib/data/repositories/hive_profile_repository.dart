@@ -10,10 +10,7 @@ class HiveProfileRepository {
     Box<String> box = Hive.box<String>(profileBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map<String, String> profile =
-          await apiRepository.getProfile(user['username']!, user['password']!);
+      Map<String, String> profile = await apiRepository.getProfile;
       if (profile.isNotEmpty) {
         box.putAll(profile);
         return profile;

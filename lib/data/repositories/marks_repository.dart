@@ -10,10 +10,7 @@ class MarksRepository {
   Future<Either<Failure, Map<dynamic, Marks>>> getMarksFromApi(
       String semID) async {
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map<String, Marks> marks = await apiRepository.getMarks(
-          user['username']!, user['password']!, semID);
+      Map<String, Marks> marks = await apiRepository.getMarks(semID);
       return Right(marks);
     } else {
       return Left(ServerFailure());

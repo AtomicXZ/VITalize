@@ -13,10 +13,7 @@ class HiveTimetableRepository {
     Box<Periods> box = Hive.box<Periods>(timetableBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map<String, Periods> timetable = await apiRepository.getTimetable(
-          user['username']!, user['password']!);
+      Map<String, Periods> timetable = await apiRepository.getTimetable;
       if (timetable.isNotEmpty) {
         box.putAll(timetable);
         return timetable;

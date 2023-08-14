@@ -10,10 +10,7 @@ class HiveExamScheduleRepository {
     Box box = Hive.box(examScheduleBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map examSchedule = await apiRepository.getExamSchedule(
-          user['username']!, user['password']!);
+      Map examSchedule = await apiRepository.getExamSchedule;
       if (examSchedule.isNotEmpty) {
         box.putAll(examSchedule);
         return examSchedule;

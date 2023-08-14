@@ -10,10 +10,7 @@ class HiveGradesRepository {
     Box box = Hive.box(gradesBoxName);
 
     if (await serverAvailable) {
-      Map<dynamic, String> user = getCreds;
-
-      Map grades =
-          await apiRepository.getGrades(user['username']!, user['password']!);
+      Map grades = await apiRepository.getGrades;
       if (grades.isNotEmpty) {
         box.putAll(grades);
         return grades;
