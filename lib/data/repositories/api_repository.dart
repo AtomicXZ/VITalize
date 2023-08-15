@@ -49,7 +49,7 @@ class APIRepository {
     final http.Response resp =
         await http.post(Uri.parse(semIDsURL), body: getCreds);
     if (resp.statusCode == 200) {
-      return jsonDecode(resp.body);
+      return parseSemID(jsonDecode(resp.body));
     } else {
       return {};
     }

@@ -22,6 +22,7 @@ class HiveAllRepository {
       if (await serverAvailable) {
         Map<String, Map<String, dynamic>> all = await apiRepository.getAll;
         if (all.isNotEmpty) {
+          emptyAllBoxesExceptUser();
           profileBox.putAll(all['profile']! as Map<String, String>);
           timetableBox.putAll(all['timetable']! as Map<String, Periods>);
           attendanceBox.putAll(all['attendance']! as Map<String, Attendance>);
