@@ -23,8 +23,7 @@ class ExamSchedulePageContent extends StatelessWidget {
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
               borderRadius: BorderRadius.circular(80.0),
-              color:
-                  Theme.of(context).colorScheme.inversePrimary.withOpacity(0.4),
+              color: Theme.of(context).colorScheme.primaryContainer,
             ),
             tabs: [
               for (var text in examSchedule.keys)
