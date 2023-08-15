@@ -9,15 +9,22 @@ part 'home_page_next_period_state.dart';
 
 class HomePageNextPeriodCubit extends Cubit<HomePageNextPeriodState> {
   HiveTimetableRepository repository = HiveTimetableRepository();
+  late Timer _timer;
 
   HomePageNextPeriodCubit() : super(HomePageNextPeriodInitial()) {
     _startTimer();
   }
 
   void _startTimer() {
-    Timer.periodic(const Duration(minutes: 5), (_) {
+    _timer = Timer.periodic(const Duration(minutes: 5), (_) {
       getNextPeriod();
     });
+  }
+
+  @override
+  Future<void> close() {
+    _timer.cancel();
+    return super.close();
   }
 
   void getNextPeriod() async {
