@@ -18,15 +18,15 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            const ListTile(
-              leading: Icon(FluentIcons.wifi_1_20_filled),
-              title: Text('Login to Hostel WiFi'),
-            ),
-            ButtonBar(
+      child: Column(
+        children: [
+          const ListTile(
+            leading: Icon(FluentIcons.wifi_1_20_filled),
+            title: Text('Login to Hostel WiFi'),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+            child: ButtonBar(
               alignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
@@ -60,8 +60,8 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

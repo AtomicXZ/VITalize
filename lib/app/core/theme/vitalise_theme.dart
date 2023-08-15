@@ -12,6 +12,7 @@ ElevatedButtonThemeData elevatedButtonTheme(
 ) {
   return ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      backgroundColor: colorScheme.primaryContainer,
       padding: const EdgeInsets.symmetric(
         horizontal: 24,
         vertical: 12,
