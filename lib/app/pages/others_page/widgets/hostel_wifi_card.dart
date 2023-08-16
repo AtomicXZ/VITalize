@@ -100,6 +100,11 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
           TextButton(
             child: const Text('Enter'),
             onPressed: () {
+              if (_passwordController.text.isEmpty) {
+                context.pop();
+                _showSnackbar(context, 'Password cannot be empty.');
+                return;
+              }
               saveWifiPassword(_passwordController.text);
               _showSnackbar(context, 'Password Saved. Try logging in again.');
               context.pop();
