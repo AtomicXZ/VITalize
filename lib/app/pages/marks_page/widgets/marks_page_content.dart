@@ -25,11 +25,20 @@ class MarksPageContent extends StatelessWidget {
             child: DropdownMenu(
               onSelected: (value) =>
                   BlocProvider.of<MarksPageCubit>(context).getMarks(value),
+              menuHeight: MediaQuery.of(context).size.height * 0.95,
+              menuStyle: const MenuStyle().copyWith(
+                shape: MaterialStatePropertyAll(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+              ),
               label: const Text(
                 'Select Semester',
                 style: TextStyle(fontSize: 16),
               ),
               inputDecorationTheme: InputDecorationTheme(
+                filled: true,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
