@@ -45,7 +45,7 @@ void registerAllAdapters() {
   Hive.registerAdapter(AttendanceAdapter());
 }
 
-void emptyAllBoxesExceptUser() {
+Future<void> emptyAllBoxesExceptUser() async {
   Box<String> profileBox = Hive.box<String>(profileBoxName);
   Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);
   Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
@@ -53,12 +53,12 @@ void emptyAllBoxesExceptUser() {
   Box gradesBox = Hive.box(gradesBoxName);
   Box examScheduleBox = Hive.box(examScheduleBoxName);
 
-  profileBox.clear();
-  timetableBox.clear();
-  attendanceBox.clear();
-  gradesBox.clear();
-  semIDsBox.clear();
-  examScheduleBox.clear();
+  await profileBox.clear();
+  await timetableBox.clear();
+  await attendanceBox.clear();
+  await gradesBox.clear();
+  await semIDsBox.clear();
+  await examScheduleBox.clear();
 }
 
 void emptyAllBoxes() {
