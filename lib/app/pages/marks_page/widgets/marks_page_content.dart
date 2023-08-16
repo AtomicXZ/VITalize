@@ -20,21 +20,24 @@ class MarksPageContent extends StatelessWidget {
           constraints: BoxConstraints(
             maxWidth: MediaQuery.of(context).size.width * 0.95,
           ),
-          child: DropdownMenu(
-            onSelected: (value) =>
-                BlocProvider.of<MarksPageCubit>(context).getMarks(value),
-            label: const Text(
-              'Select Semester',
-              style: TextStyle(fontSize: 16),
-            ),
-            inputDecorationTheme: InputDecorationTheme(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: DropdownMenu(
+              onSelected: (value) =>
+                  BlocProvider.of<MarksPageCubit>(context).getMarks(value),
+              label: const Text(
+                'Select Semester',
+                style: TextStyle(fontSize: 16),
               ),
+              inputDecorationTheme: InputDecorationTheme(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+              dropdownMenuEntries: state.semIDs.entries
+                  .map((e) => DropdownMenuEntry(value: e.key, label: e.value))
+                  .toList(),
             ),
-            dropdownMenuEntries: state.semIDs.entries
-                .map((e) => DropdownMenuEntry(value: e.key, label: e.value))
-                .toList(),
           ),
         ),
         const SizedBox(height: 8),
