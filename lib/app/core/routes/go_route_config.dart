@@ -71,6 +71,8 @@ final othersPageConfig = GoRouterConfig(
   child: const OthersPage(),
 );
 final timetablePageConfig = GoRouterConfig(
+  icon: FluentIcons.clock_24_regular,
+  selectedIcon: FluentIcons.clock_24_filled,
   name: 'Timetable',
   child: const TimetablePageProvider(),
 );
