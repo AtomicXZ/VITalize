@@ -38,9 +38,9 @@ Future<int> loginSophosClient() async {
   }
 }
 
-void logoutSophosClient() {
+Future<void> logoutSophosClient() async {
   Box<String> userBox = Hive.box(userBoxName);
-  http.post(Uri.parse(hostelWifiLoginURL), body: {
+  await http.post(Uri.parse(hostelWifiLoginURL), body: {
     'mode': '193',
     'username': userBox.get('username'),
     'producttype': '0',

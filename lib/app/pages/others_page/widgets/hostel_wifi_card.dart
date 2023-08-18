@@ -46,9 +46,9 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
                   child: const Text('Login'),
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    await logoutSophosClient();
                     _showSnackbar(context, 'Logged out of Hostel WiFi');
-                    logoutSophosClient();
                   },
                   child: const Text('Logout'),
                 ),
