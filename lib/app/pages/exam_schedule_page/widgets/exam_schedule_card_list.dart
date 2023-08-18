@@ -31,7 +31,7 @@ class ExamScheduleCardList extends StatelessWidget {
           final subject = sortedSubjects.values.elementAt(index);
           return AnimationConfiguration.staggeredList(
             position: index,
-            duration: const Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 150),
             child: SlideAnimation(
               verticalOffset: 44,
               child: FadeInAnimation(

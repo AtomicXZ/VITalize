@@ -33,7 +33,7 @@ class AttendancePage extends StatelessWidget {
               itemBuilder: (context, index) =>
                   AnimationConfiguration.staggeredList(
                 position: index,
-                duration: const Duration(milliseconds: 250),
+                duration: const Duration(milliseconds: 150),
                 child: SlideAnimation(
                   verticalOffset: 44,
                   child: FadeInAnimation(

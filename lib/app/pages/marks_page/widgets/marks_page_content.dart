@@ -117,7 +117,7 @@ class MarksPageContent extends StatelessWidget {
           position: index,
           child: SlideAnimation(
             verticalOffset: 44,
-            duration: const Duration(milliseconds: 250),
+            duration: const Duration(milliseconds: 150),
             child: FadeInAnimation(
               child: MarksCard(
                 subject: state.marks.values.elementAt(index),

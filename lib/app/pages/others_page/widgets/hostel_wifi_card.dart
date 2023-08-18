@@ -37,7 +37,7 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
                     } else if (code == 0) {
                       _showSnackbar(context, 'Logged in to Hostel WiFi.');
                     } else if (code == 1) {
-                      _showSnackbar(context, 'Maximum login limit reached');
+                      _showSnackbar(context, 'Maximum login limit reached.');
                     } else {
                       _showSnackbar(
                           context, 'Password incorrect. Edit the password.');
@@ -48,7 +48,7 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
                 ElevatedButton(
                   onPressed: () async {
                     await logoutSophosClient();
-                    _showSnackbar(context, 'Logged out of Hostel WiFi');
+                    _showSnackbar(context, 'Logged out of Hostel WiFi.');
                   },
                   child: const Text('Logout'),
                 ),
