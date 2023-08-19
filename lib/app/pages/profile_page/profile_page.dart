@@ -40,18 +40,14 @@ class ProfilePage extends StatelessWidget {
           return SingleChildScrollView(
             child: AnimatedColumn(
               children: [
-                Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(70),
-                    child: Image.memory(
-                      base64.decode(state.profile['image']!),
-                      fit: BoxFit.fill,
-                      height: 140,
-                      width: 140,
-                    ),
+                CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  radius: 80,
+                  backgroundImage: MemoryImage(
+                    base64Decode(state.profile['image']!),
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 16),
                 for (var field in fields)
                   _buildListItem(
                     field,
