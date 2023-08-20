@@ -3,14 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:vitalize/app/core/routes/go_route_config.dart';
 
 class ScaffoldWithNavbar extends StatelessWidget {
-  final int index;
-  final String title;
+  final StatefulNavigationShell navigationShell;
 
-  ScaffoldWithNavbar({
+  const ScaffoldWithNavbar({
     super.key,
-    required GoRouterConfig page,
-  })  : index = allNavBarConfigs.indexWhere((element) => element == page),
-        title = page.name;
+    required this.navigationShell,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +16,14 @@ class ScaffoldWithNavbar extends StatelessWidget {
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.fromLTRB(12, 12, 12, 0),
-        child: allNavBarConfigs[index].child,
+        child: navigationShell,
       )),
       bottomNavigationBar: NavigationBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        animationDuration: const Duration(seconds: 1),
-        selectedIndex: index,
-        onDestinationSelected: (index) {
-          context.goNamed(allNavBarConfigs[index].name);
-        },
+        selectedIndex: navigationShell.currentIndex,
+        onDestinationSelected: (index) => navigationShell.goBranch(
+          index,
+          initialLocation: index == navigationShell.currentIndex,
+        ),
         destinations: _navBarItems,
       ),
     );
@@ -38,5 +35,5 @@ List<NavigationDestination> _navBarItems = [
     NavigationDestination(
         icon: Icon(item.icon),
         selectedIcon: Icon(item.selectedIcon),
-        label: item.name)
+        label: item.name),
 ];
