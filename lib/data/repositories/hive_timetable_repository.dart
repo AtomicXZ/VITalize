@@ -34,8 +34,13 @@ class HiveTimetableRepository {
   }
 
   Future<List<Period>> getTodaysPeriods() async {
-    if (todayAsWord != 'Holiday') {
-      return (await getTimetableFromBox)[todayAsWord]!.periods;
+    return await getSpecificDayPeriods(DateTime.now().weekday);
+  }
+
+  Future<List<Period>> getSpecificDayPeriods(int day) async {
+    final String dayAsWord = dayAsWords(day);
+    if (dayAsWord != 'Holiday') {
+      return (await getTimetableFromBox)[dayAsWord]!.periods;
     } else {
       return [];
     }

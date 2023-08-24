@@ -1,14 +1,20 @@
 part of 'homepage_cubit.dart';
 
 @immutable
-abstract class HomePageState {}
+abstract class HomePageState {
+  final String header;
+  const HomePageState({this.header = 'Today'});
+}
 
 class HomePageInitial extends HomePageState {}
 
 class HomePagePeriods extends HomePageState {
   final List<Period> periods;
 
-  HomePagePeriods(this.periods);
+  const HomePagePeriods(this.periods, {super.header = 'Today'});
 }
 
-class HomePageHoliday extends HomePageState {}
+class HomePageNextDayPeriods extends HomePagePeriods {
+  const HomePageNextDayPeriods(List<Period> periods, String header)
+      : super(periods, header: header);
+}

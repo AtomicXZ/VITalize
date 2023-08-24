@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/utils/cache_all_data.dart';
 import 'package:vitalize/app/core/widgets/centered_circular_progress_bar.dart';
-import 'package:vitalize/app/core/widgets/holiday.dart';
 import 'package:vitalize/app/core/widgets/period_card.dart';
 import 'package:vitalize/app/core/widgets/period_list.dart';
 import 'package:vitalize/app/pages/home_page/cubit/home_page_next_period_cubit.dart';
@@ -95,12 +94,16 @@ class HomePage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Today\'s Classes',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                      fontWeight: FontWeight.w300,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
+              BlocBuilder<HomePageCubit, HomePageState>(
+                builder: (context, state) {
+                  return Text(
+                    '${state.header}\'s Classes',
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                          fontWeight: FontWeight.w300,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
+                  );
+                },
               ),
               TextButton(
                 onPressed: () {
@@ -127,13 +130,6 @@ class HomePage extends StatelessWidget {
               );
             } else if (state is HomePagePeriods) {
               return PeriodsList(periods: state.periods);
-            } else if (state is HomePageHoliday) {
-              return const Column(children: [
-                SizedBox(
-                  height: 175,
-                ),
-                Holiday(),
-              ]);
             } else {
               return const Placeholder();
             }

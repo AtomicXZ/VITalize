@@ -1,8 +1,10 @@
 import 'package:intl/intl.dart';
 
 String get todayAsWord {
-  int day = DateTime.now().weekday;
+  return dayAsWords(DateTime.now().weekday);
+}
 
+String dayAsWords(int day) {
   final dayNames = {
     2: 'Tuesday',
     3: 'Wednesday',
