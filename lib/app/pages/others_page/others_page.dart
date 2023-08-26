@@ -38,9 +38,9 @@ class OthersPage extends StatelessWidget {
             subtitle: 'Exam Schedule for current semester.',
           ),
           NavigatorPressableCard(
-            page: timetablePageConfig,
-            title: 'Time Table',
-            subtitle: 'Time Table for current semester.',
+            page: settingsPageConfig,
+            title: 'Settings',
+            subtitle: 'Customize the app settings.',
           ),
           _gap,
           const DividerWithLabel(label: 'Utils'),

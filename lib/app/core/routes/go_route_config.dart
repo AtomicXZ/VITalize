@@ -10,6 +10,8 @@ import 'package:vitalize/app/pages/others_page/others_page.dart';
 import 'package:vitalize/app/pages/profile_page/profile_page.dart';
 import 'package:vitalize/app/pages/time_table_page/timetable_page.dart';
 
+import '../../pages/settings_page/settings_page.dart';
+
 class GoRouterConfig {
   final IconData? icon;
   final IconData? selectedIcon;
@@ -75,4 +77,10 @@ final timetablePageConfig = GoRouterConfig(
   selectedIcon: FluentIcons.clock_24_filled,
   name: 'Timetable',
   child: const TimetablePageProvider(),
+);
+final settingsPageConfig = GoRouterConfig(
+  icon: FluentIcons.settings_24_regular,
+  selectedIcon: FluentIcons.settings_24_filled,
+  name: 'Settings',
+  child: const SettingsPage(),
 );

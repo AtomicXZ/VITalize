@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vitalize/app/core/routes/go_route_config.dart';
-import 'package:vitalize/app/core/utils/is_first_launch.dart';
+import 'package:vitalize/app/core/utils/hive_user_box_utils.dart';
 import 'package:vitalize/app/core/widgets/scaffold_with_appbar.dart';
 import 'package:vitalize/app/core/widgets/scaffold_with_navbar.dart';
 
@@ -73,6 +73,11 @@ final routes = GoRouter(
       path: '$_root/${timetablePageConfig.name}',
       builder: (context, state) =>
           ScaffoldWithAppbar(page: timetablePageConfig),
+    ),
+    GoRoute(
+      name: settingsPageConfig.name,
+      path: '$_root/${settingsPageConfig.name}',
+      builder: (context, state) => ScaffoldWithAppbar(page: settingsPageConfig),
     ),
     GoRoute(
       name: loginPageConfig.name,
