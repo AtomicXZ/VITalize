@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitalize/app/core/routes/routes.dart';
 import 'package:vitalize/app/core/theme/vitalise_theme.dart';
-import 'package:vitalize/app/core/utils/hive_settings_keys.dart';
 import 'package:vitalize/app/core/utils/hive_user_box_utils.dart';
 import 'package:vitalize/data/constants.dart';
 

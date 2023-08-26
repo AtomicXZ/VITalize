@@ -1,6 +1,5 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:vitalize/app/core/utils/hive_settings_keys.dart';
 import 'package:vitalize/app/core/utils/hive_user_box_utils.dart';
 import 'package:vitalize/app/core/widgets/animated_column.dart';
 

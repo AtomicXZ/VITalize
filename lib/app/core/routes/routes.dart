@@ -14,7 +14,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 const _root = '/home';
 
 String get initialLocation {
-  if (isFirstLaunch) {
+  if (isTrue(firstLaunch)) {
     return loginPageConfig.name;
   } else {
     return homePageConfig.name;

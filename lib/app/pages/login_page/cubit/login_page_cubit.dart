@@ -1,6 +1,7 @@
 import 'package:either_dart/either.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:vitalize/app/core/utils/hive_user_box_utils.dart';
 import 'package:vitalize/data/constants.dart';
 import 'package:vitalize/data/utils/failure.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
@@ -56,7 +57,7 @@ class LoginPageCubit extends Cubit<LoginPageState> {
     userBox.putAll({
       'username': state.username,
       'password': state.password,
-      'isFirstLaunch': 'false',
+      firstLaunch: 'false',
     });
     await cacheAllData();
   }

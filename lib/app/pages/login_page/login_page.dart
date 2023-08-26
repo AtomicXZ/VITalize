@@ -76,8 +76,6 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _gap() => const SizedBox(height: 16);
-
   void _showPopup(BuildContext context, String title, String content) {
     showDialog(
       context: context,

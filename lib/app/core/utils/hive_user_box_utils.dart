@@ -1,10 +1,10 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-bool get isFirstLaunch {
-  Box<String> userBox = Hive.box('userBox');
+// hive user keys - for settings
+const String dynamicTheme = 'dynamicTheme';
+const String firstLaunch = 'isFirstLaunch';
 
-  return userBox.get('isFirstLaunch') != 'false';
-}
+const List<String> listenableKeys = [dynamicTheme];
 
 bool isTrue(String field) {
   Box<String> userBox = Hive.box('userBox');
