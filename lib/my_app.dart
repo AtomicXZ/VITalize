@@ -25,11 +25,13 @@ class MyApp extends StatelessWidget {
           lightColorScheme = lightDynamic.harmonized();
           darkColorScheme = darkDynamic.harmonized();
         } else {
+          Color colorFromBox =
+              Color(int.parse(getString(themeColor) ?? primaryColor));
           lightColorScheme = ColorScheme.fromSeed(
-            seedColor: primaryColor,
+            seedColor: colorFromBox,
           );
           darkColorScheme = ColorScheme.fromSeed(
-            seedColor: primaryColor,
+            seedColor: colorFromBox,
             brightness: Brightness.dark,
           );
         }

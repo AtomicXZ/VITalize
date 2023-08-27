@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'custom_color.dart';
 
-const Color primaryColor = Color.fromARGB(255, 205, 135, 249);
+const String primaryColor = '0xFFCD87F9';
 const String fontPreference = 'Lato';
 
 ElevatedButtonThemeData elevatedButtonTheme(
