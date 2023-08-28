@@ -98,6 +98,7 @@ class TimetablePage extends StatelessWidget {
                   return const CenteredCircularProgressBar();
                 } else if (state is TimetablePeriods) {
                   return SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
                     child: PeriodsList(periods: state.periods),
                   );
                 } else if (state is TimetableHoliday) {

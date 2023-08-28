@@ -14,6 +14,7 @@ class OthersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: AnimatedColumn(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

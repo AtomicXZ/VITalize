@@ -24,47 +24,50 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedColumn(children: [
-      Card(
-        elevation: 2,
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: ListTile(
-            leading: const Icon(FluentIcons.color_24_regular),
-            title: const Text('Use dynamic theme'),
-            trailing: Switch(
-              value: _dynamicTheme,
-              onChanged: (value) {
-                setState(() {
-                  _dynamicTheme = value;
-                });
-                setKeyValue(dynamicTheme, value);
-              },
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: AnimatedColumn(children: [
+        Card(
+          elevation: 2,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: ListTile(
+              leading: const Icon(FluentIcons.color_24_regular),
+              title: const Text('Use dynamic theme'),
+              trailing: Switch(
+                value: _dynamicTheme,
+                onChanged: (value) {
+                  setState(() {
+                    _dynamicTheme = value;
+                  });
+                  setKeyValue(dynamicTheme, value);
+                },
+              ),
             ),
           ),
         ),
-      ),
-      Card(
-        elevation: 2,
-        margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          child: ListTile(
-            enabled: !_dynamicTheme,
-            leading: const Icon(FluentIcons.color_24_regular),
-            title: const Text('Custom Theme Color'),
-            trailing: ElevatedButton(
-              onPressed: _dynamicTheme ? null : _openColorPickerDialog,
-              onLongPress: null,
-              child: !_dynamicTheme
-                  ? const Text('Pick color')
-                  : const Text('Disabled'),
+        Card(
+          elevation: 2,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: ListTile(
+              enabled: !_dynamicTheme,
+              leading: const Icon(FluentIcons.color_24_regular),
+              title: const Text('Custom Theme Color'),
+              trailing: ElevatedButton(
+                onPressed: _dynamicTheme ? null : _openColorPickerDialog,
+                onLongPress: null,
+                child: !_dynamicTheme
+                    ? const Text('Pick color')
+                    : const Text('Disabled'),
+              ),
             ),
           ),
         ),
-      ),
-    ]);
+      ]),
+    );
   }
 
   void _openColorPickerDialog() {

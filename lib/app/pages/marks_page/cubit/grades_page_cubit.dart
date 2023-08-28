@@ -9,7 +9,11 @@ class GradesPageCubit extends Cubit<GradesPageState> {
 
   GradesPageCubit() : super(GradesPageInitial());
 
-  void getGrades() async {
+  void getGradesFromBox() async {
     emit(GradesPageLoaded(await repository.getGradesFromBox));
+  }
+
+  void getGradesFromApi() async {
+    emit(GradesPageLoaded(await repository.getGradesFromApiAndCache));
   }
 }

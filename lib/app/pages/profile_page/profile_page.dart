@@ -38,6 +38,7 @@ class ProfilePage extends StatelessWidget {
           return const CenteredCircularProgressBar();
         } else if (state is ProfilePageLoaded) {
           return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: AnimatedColumn(
               children: [
                 CircleAvatar(

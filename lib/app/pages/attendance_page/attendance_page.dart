@@ -1,3 +1,4 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -11,7 +12,7 @@ class AttendancePageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AttendancePageCubit()..loadAttendance(),
+      create: (context) => AttendancePageCubit()..loadAttendanceFromBox(),
       child: const AttendancePage(),
     );
   }
@@ -28,17 +29,23 @@ class AttendancePage extends StatelessWidget {
           return const CenteredCircularProgressBar();
         } else if (state is AttendancePageLoaded) {
           return AnimationLimiter(
-            child: ListView.builder(
-              itemCount: state.attendance.length,
-              itemBuilder: (context, index) =>
-                  AnimationConfiguration.staggeredList(
-                position: index,
-                duration: const Duration(milliseconds: 150),
-                child: SlideAnimation(
-                  verticalOffset: 44,
-                  child: FadeInAnimation(
-                    child: AttendanceCard(
-                      attendance: state.attendance.values.elementAt(index),
+            child: EasyRefresh(
+              onRefresh: () {
+                BlocProvider.of<AttendancePageCubit>(context)
+                    .loadAttendanceFromApi();
+              },
+              child: ListView.builder(
+                itemCount: state.attendance.length,
+                itemBuilder: (context, index) =>
+                    AnimationConfiguration.staggeredList(
+                  position: index,
+                  duration: const Duration(milliseconds: 150),
+                  child: SlideAnimation(
+                    verticalOffset: 44,
+                    child: FadeInAnimation(
+                      child: AttendanceCard(
+                        attendance: state.attendance.values.elementAt(index),
+                      ),
                     ),
                   ),
                 ),

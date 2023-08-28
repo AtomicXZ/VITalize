@@ -1,7 +1,7 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:vitalize/app/core/widgets/animated_column.dart';
 import 'package:vitalize/app/core/widgets/center_widget_in_column.dart';
 import 'package:vitalize/app/pages/marks_page/cubit/marks_page_cubit.dart';
 import 'package:vitalize/app/pages/marks_page/cubit/semester_id_menu_cubit.dart';
@@ -111,19 +111,15 @@ class MarksPageContent extends StatelessWidget {
 
   Widget _buildMarksList(MarksPageLoaded state) {
     return Expanded(
-      child: ListView.builder(
-        itemCount: state.marks.length,
-        itemBuilder: (context, index) => AnimationConfiguration.staggeredList(
-          position: index,
-          child: SlideAnimation(
-            verticalOffset: 44,
-            duration: const Duration(milliseconds: 150),
-            child: FadeInAnimation(
-              child: MarksCard(
-                subject: state.marks.values.elementAt(index),
+      child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: AnimatedColumn(
+          children: [
+            for (var subject in state.marks.values)
+              MarksCard(
+                subject: subject,
               ),
-            ),
-          ),
+          ],
         ),
       ),
     );

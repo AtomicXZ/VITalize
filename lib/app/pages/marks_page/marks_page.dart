@@ -21,7 +21,7 @@ class MarksPageProvider extends StatelessWidget {
           create: (context) => MarksPageCubit(),
         ),
         BlocProvider<GradesPageCubit>(
-          create: (context) => GradesPageCubit()..getGrades(),
+          create: (context) => GradesPageCubit()..getGradesFromBox(),
         )
       ],
       child: const MarksPage(),
