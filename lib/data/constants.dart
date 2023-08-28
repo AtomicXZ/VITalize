@@ -40,3 +40,4 @@ const String examScheduleBoxName = 'examScheduleBox';
 const String allDataLastUpdated = 'allDataLastUpdated';
 const String attendanceLastUpdated = 'attendanceLastUpdated';
 const String gradesLastUpdated = 'gradesLastUpdated';
+const String examScheduleLastUpdated = 'examScheduleLastUpdated';

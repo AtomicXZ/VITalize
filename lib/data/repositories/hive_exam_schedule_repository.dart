@@ -26,8 +26,9 @@ class HiveExamScheduleRepository {
     String day = DateTime.now().day.toString();
 
     if (examScheduleBox.isEmpty ||
-        userBox.get('examScheduleLastUpdated') != day) {
-      userBox.put('examScheduleLastUpdated', day);
+        (userBox.get(examScheduleLastUpdated) != day &&
+            userBox.get(allDataLastUpdated) != day)) {
+      userBox.put(examScheduleLastUpdated, day);
       return getExamScheduleFromApiAndCache;
     }
 
