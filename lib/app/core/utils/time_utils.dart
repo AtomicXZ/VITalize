@@ -15,6 +15,19 @@ String dayAsWords(int day) {
   return dayNames[day] ?? 'Holiday';
 }
 
+int numberFromDay(String day) {
+  final dayNumbers = {
+    'Monday': 1,
+    'Tuesday': 2,
+    'Wednesday': 3,
+    'Thursday': 4,
+    'Friday': 5,
+    'Saturday': 6,
+    'Sunday': 7,
+  };
+  return dayNumbers[day] ?? -1;
+}
+
 String get getCurrentTime {
   final DateTime now = DateTime.now();
   return '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';

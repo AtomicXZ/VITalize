@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
@@ -12,5 +13,17 @@ void main() async {
   await openAllBoxes();
   // for sophos wifi client
   HttpOverrides.global = DevHttpOverrides();
+  AwesomeNotifications().initialize(
+      'resource://drawable/res_icon',
+      [
+        NotificationChannel(
+          channelGroupKey: 'class_reminder_group',
+          channelKey: 'class_reminder',
+          channelName: 'Class Reminder Notifications',
+          channelDescription: 'Notification channel for class reminders',
+          ledColor: Colors.white,
+        )
+      ],
+      debug: true);
   runApp(const MyApp());
 }

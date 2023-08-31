@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vitalize/app/core/utils/schedule_notifcations.dart';
 
 import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/widgets/animated_column.dart';
@@ -21,6 +22,7 @@ class OthersPage extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               emptyAllBoxes();
+              cancelNotifications();
               context.goNamed(loginPageConfig.name);
             },
             child: const Text('Logout'),

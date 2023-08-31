@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 const String dynamicTheme = 'dynamicTheme';
 const String firstLaunch = 'isFirstLaunch';
 const String themeColor = 'themeColor';
+const String reminderTime = 'reminderTime';
 
 const List<String> listenableKeys = [dynamicTheme, themeColor];
 

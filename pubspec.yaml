@@ -50,6 +50,7 @@ dependencies:
   flutter_staggered_animations: ^1.1.1
   flutter_material_color_picker: ^1.2.0
   easy_refresh: ^3.3.2+1
+  awesome_notifications: ^0.7.4+1
 
 dev_dependencies:
   flutter_test:
