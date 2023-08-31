@@ -74,44 +74,52 @@ class _SettingsPageState extends State<SettingsPage> {
             elevation: 2,
             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: ListTile(
-                leading: const Icon(FluentIcons.mail_24_regular),
-                title: const Text('Schedule notifications for classes'),
-                subtitle: Padding(
-                  padding: const EdgeInsets.only(top: 12),
-                  child: Slider(
-                    value: _currentNotificationValue,
-                    max: 30,
-                    divisions: 6,
-                    label: _currentNotificationValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        _currentNotificationValue = value;
-                      });
-                    },
-                    onChangeEnd: (value) {
-                      setKeyValue(reminderTime, value);
-                      ScaffoldMessenger.of(context).clearSnackBars();
-                      if (value == 0) {
-                        cancelNotifications();
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Class notifications are disabled.'),
-                          ),
-                        );
-                      } else {
-                        scheduleClassNotifcations(value.round());
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                                'Class notifications set to show ${value.round()} minutes before class.'),
-                          ),
-                        );
-                      }
-                    },
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Column(
+                children: [
+                  const ListTile(
+                    leading: Icon(FluentIcons.mail_24_regular),
+                    title: Text('Schedule notifications for classes'),
                   ),
-                ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Text('Time in minutes'),
+                      Slider(
+                        value: _currentNotificationValue,
+                        max: 30,
+                        divisions: 6,
+                        label: _currentNotificationValue.round().toString(),
+                        onChanged: (double value) {
+                          setState(() {
+                            _currentNotificationValue = value;
+                          });
+                        },
+                        onChangeEnd: (value) {
+                          setKeyValue(reminderTime, value);
+                          ScaffoldMessenger.of(context).clearSnackBars();
+                          if (value == 0) {
+                            cancelNotifications();
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text('Class notifications are disabled.'),
+                              ),
+                            );
+                          } else {
+                            scheduleClassNotifcations(value.round());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                    'Class notifications set to show ${value.round()} minutes before class.'),
+                              ),
+                            );
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),
