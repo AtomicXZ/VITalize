@@ -92,11 +92,20 @@ class _SettingsPageState extends State<SettingsPage> {
                     },
                     onChangeEnd: (value) {
                       setKeyValue(reminderTime, value);
-                      scheduleClassNotifcations(value.round());
+                      ScaffoldMessenger.of(context).clearSnackBars();
                       if (value == 0) {
+                        cancelNotifications();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text('Class notifications are disabled.'),
+                          ),
+                        );
+                      } else {
+                        scheduleClassNotifcations(value.round());
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                                'Class notifications set to show ${value.round()} minutes before class.'),
                           ),
                         );
                       }

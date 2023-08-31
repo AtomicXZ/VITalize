@@ -4,38 +4,20 @@ import 'package:vitalize/data/models/period.dart';
 import 'package:vitalize/data/models/periods.dart';
 import 'package:vitalize/data/repositories/hive_timetable_repository.dart';
 
-void sendNotification() async {
-  if (!(await askNotificationPermission())) return;
-
-  Map<dynamic, Periods> periods =
-      await HiveTimetableRepository().getTimetableFromBox;
-
-  Period period = periods.values.elementAt(0).periods[0];
-  await AwesomeNotifications().createNotification(
-    content: NotificationContent(
-      id: 50505,
-      channelKey: 'class_reminder',
-      title: 'Your class starts at ${period.startTime}',
-      body: 'You have ${period.name} in ${period.location}.',
-      wakeUpScreen: true,
-      category: NotificationCategory.Reminder,
-    ),
-  );
-}
+final AwesomeNotifications awesomeNotifications = AwesomeNotifications();
 
 void scheduleClassNotifcations(int minutesBeforeClass) async {
   if (!(await askNotificationPermission())) return;
-  if (minutesBeforeClass == 0) return cancelNotifications();
-
+  cancelNotifications();
   Map<dynamic, Periods> periods =
       await HiveTimetableRepository().getTimetableFromBox;
   String localTimeZone =
-      await AwesomeNotifications().getLocalTimeZoneIdentifier();
+      await awesomeNotifications.getLocalTimeZoneIdentifier();
 
   for (int i = 0; i < periods.length; i++) {
     for (int j = 0; j < periods.values.elementAt(i).periods.length; j++) {
       Period period = periods.values.elementAt(i).periods[j];
-      await AwesomeNotifications().createNotification(
+      await awesomeNotifications.createNotification(
         content: NotificationContent(
           id: int.parse('$i$j'),
           channelKey: 'class_reminder',
@@ -58,15 +40,14 @@ void scheduleClassNotifcations(int minutesBeforeClass) async {
 }
 
 Future<bool> askNotificationPermission() async {
-  await AwesomeNotifications().isNotificationAllowed().then((isAllowed) async {
+  await awesomeNotifications.isNotificationAllowed().then((isAllowed) async {
     if (!isAllowed) {
-      return await AwesomeNotifications()
-          .requestPermissionToSendNotifications();
+      return await awesomeNotifications.requestPermissionToSendNotifications();
     }
   });
   return true;
 }
 
 void cancelNotifications() {
-  AwesomeNotifications().cancelAllSchedules();
+  awesomeNotifications.cancelAllSchedules();
 }
