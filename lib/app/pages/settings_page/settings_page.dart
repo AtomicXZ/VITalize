@@ -16,10 +16,12 @@ class SettingsPage extends StatefulWidget {
 
 class _SettingsPageState extends State<SettingsPage> {
   late bool _dynamicTheme;
+  late double _currentNotificationValue;
 
   @override
   void initState() {
     _dynamicTheme = isTrue(dynamicTheme);
+    _currentNotificationValue = double.parse(getString(reminderTime) ?? '0');
     super.initState();
   }
 
@@ -78,27 +80,27 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: const Text('Schedule notifications for classes'),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 12),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      DropdownMenu<int>(
-                        initialSelection:
-                            int.parse(getString(reminderTime) ?? '0'),
-                        onSelected: (value) {
-                          setKeyValue(reminderTime, value);
-                          scheduleClassNotifcations(value!);
-                        },
-                        dropdownMenuEntries: const [
-                          DropdownMenuEntry(value: 0, label: 'Disabled'),
-                          DropdownMenuEntry(value: 5, label: '5 minutes'),
-                          DropdownMenuEntry(value: 10, label: '10 minutes'),
-                          DropdownMenuEntry(value: 15, label: '15 minutes'),
-                          DropdownMenuEntry(value: 20, label: '20 minutes'),
-                          DropdownMenuEntry(value: 25, label: '25 minutes'),
-                          DropdownMenuEntry(value: 30, label: '30 minutes'),
-                        ],
-                      ),
-                    ],
+                  child: Slider(
+                    value: _currentNotificationValue,
+                    max: 30,
+                    divisions: 6,
+                    label: _currentNotificationValue.round().toString(),
+                    onChanged: (double value) {
+                      setState(() {
+                        _currentNotificationValue = value;
+                      });
+                    },
+                    onChangeEnd: (value) {
+                      setKeyValue(reminderTime, value);
+                      scheduleClassNotifcations(value.round());
+                      if (value == 0) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Class notifications are disabled.'),
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ),
               ),
