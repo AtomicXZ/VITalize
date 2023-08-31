@@ -15,7 +15,7 @@ class LoginPageCubit extends Cubit<LoginPageState> {
 
   void usernameChanged(String username) {
     emit(state.copyWith(
-        username: username.toUpperCase(), status: LoginStatus.initial));
+        username: username.toUpperCase().trim(), status: LoginStatus.initial));
   }
 
   void passwordChanged(String password) {
