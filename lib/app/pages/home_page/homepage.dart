@@ -36,9 +36,10 @@ class HomePage extends StatelessWidget {
       onRefresh: () async {
         BlocProvider.of<HomePageNextPeriodCubit>(context).emitLoadingState();
         BlocProvider.of<HomePageCubit>(context).emitLoadingState();
-        await cacheAllData();
+        bool success = await cacheAllData();
         BlocProvider.of<HomePageNextPeriodCubit>(context).getNextPeriod();
         BlocProvider.of<HomePageCubit>(context).todaysTimetable();
+        return success ? IndicatorResult.success : IndicatorResult.fail;
       },
       child: ListView(
         children: [

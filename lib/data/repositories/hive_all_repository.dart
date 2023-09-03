@@ -10,7 +10,7 @@ import 'package:vitalize/data/utils/hive_box_utils.dart';
 class HiveAllRepository {
   APIRepository apiRepository = APIRepository();
 
-  Future<void> get getAllFromApiAndCache async {
+  Future<bool> get getAllFromApiAndCache async {
     Box<String> profileBox = Hive.box<String>(profileBoxName);
     Box<Periods> timetableBox = Hive.box<Periods>(timetableBoxName);
     Box<Attendance> attendanceBox = Hive.box<Attendance>(attendanceBoxName);
@@ -29,10 +29,12 @@ class HiveAllRepository {
           semIDsBox.putAll(all['semIDs']! as Map<String, String>);
           gradesBox.putAll(all['grades']!);
           examScheduleBox.putAll(all['examSchedule']!);
+          return true;
         }
       }
     } on SocketException {
       // ignore for now and just move on, data will be fetched again if no data is available
     }
+    return false;
   }
 }
