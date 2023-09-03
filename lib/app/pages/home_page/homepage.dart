@@ -108,13 +108,17 @@ class HomePage extends StatelessWidget {
               children: [
                 BlocBuilder<HomePageCubit, HomePageState>(
                   builder: (context, state) {
-                    return Text(
-                      '${state.header}\'s Classes',
-                      style:
-                          Theme.of(context).textTheme.headlineMedium!.copyWith(
-                                fontWeight: FontWeight.w300,
-                                color: Theme.of(context).colorScheme.onSurface,
-                              ),
+                    return Expanded(
+                      child: Text(
+                        '${state.header}\'s Classes',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium!
+                            .copyWith(
+                              fontWeight: FontWeight.w300,
+                              color: Theme.of(context).colorScheme.onSurface,
+                            ),
+                      ),
                     );
                   },
                 ),
