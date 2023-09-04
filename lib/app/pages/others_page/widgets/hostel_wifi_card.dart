@@ -78,7 +78,6 @@ class _HostelWifiCardState extends State<HostelWifiCard> {
   Future<void> _showPasswordDialog(BuildContext context) async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false,
       builder: (context) => AlertDialog(
         title: const Text('Enter your password'),
         content: TextField(
