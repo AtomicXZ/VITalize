@@ -28,19 +28,20 @@ class _ThemeCardsState extends State<ThemeCards> {
         Card(
           elevation: 2,
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: ListTile(
-              leading: const Icon(FluentIcons.color_24_regular),
-              title: const Text('Use dynamic theme'),
-              trailing: Switch(
-                value: _dynamicTheme,
-                onChanged: (value) {
-                  setState(() {
-                    _dynamicTheme = value;
-                  });
-                  setKeyValue(dynamicTheme, value);
-                },
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: _toggleDynamicTheme,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ListTile(
+                leading: const Icon(FluentIcons.color_24_regular),
+                title: const Text('Use dynamic theme'),
+                trailing: Switch(
+                  value: _dynamicTheme,
+                  onChanged: (value) {
+                    _toggleDynamicTheme();
+                  },
+                ),
               ),
             ),
           ),
@@ -48,24 +49,35 @@ class _ThemeCardsState extends State<ThemeCards> {
         Card(
           elevation: 2,
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: ListTile(
-              enabled: !_dynamicTheme,
-              leading: const Icon(FluentIcons.color_24_regular),
-              title: const Text('Custom Theme Color'),
-              trailing: ElevatedButton(
-                onPressed: _dynamicTheme ? null : _openColorPickerDialog,
-                onLongPress: null,
-                child: !_dynamicTheme
-                    ? const Text('Pick color')
-                    : const Text('Disabled'),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: _dynamicTheme ? null : _openColorPickerDialog,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: ListTile(
+                enabled: !_dynamicTheme,
+                leading: const Icon(FluentIcons.color_24_regular),
+                title: const Text('Custom Theme Color'),
+                trailing: ElevatedButton(
+                  onPressed: _dynamicTheme ? null : _openColorPickerDialog,
+                  onLongPress: null,
+                  child: !_dynamicTheme
+                      ? const Text('Pick color')
+                      : const Text('Disabled'),
+                ),
               ),
             ),
           ),
         ),
       ],
     );
+  }
+
+  void _toggleDynamicTheme() {
+    setState(() {
+      _dynamicTheme = !_dynamicTheme;
+    });
+    setKeyValue(dynamicTheme, _dynamicTheme);
   }
 
   void _openColorPickerDialog() {
