@@ -7,13 +7,11 @@ class CenterWidgetInColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Flex(
-        direction: Axis.vertical,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          child,
-        ],
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.8,
+      width: double.infinity,
+      child: Center(
+        child: child,
       ),
     );
   }

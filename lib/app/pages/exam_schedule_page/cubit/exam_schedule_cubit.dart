@@ -9,7 +9,7 @@ class ExamScheduleCubit extends Cubit<ExamScheduleState> {
 
   ExamScheduleCubit() : super(ExamScheduleInitial());
 
-  void getExamSchedule() async {
+  void getExamScheduleFromBox() async {
     final examSchedule = await repository.getExamScheduleFromBox;
 
     if (examSchedule.isEmpty) {
@@ -17,5 +17,19 @@ class ExamScheduleCubit extends Cubit<ExamScheduleState> {
     } else {
       emit(ExamScheduleLoaded(examSchedule));
     }
+  }
+
+  void getExamScheduleFromApi() async {
+    final examSchedule = await repository.getExamScheduleFromApiAndCache;
+
+    if (examSchedule.isEmpty) {
+      emit(ExamScheduleNoData());
+    } else {
+      emit(ExamScheduleLoaded(examSchedule));
+    }
+  }
+
+  void emitExamScheduleNoData() {
+    emit(ExamScheduleNoData());
   }
 }
