@@ -50,7 +50,11 @@ class MyApp extends StatelessWidget {
           ).copyWith(
             textTheme: lightTextTheme,
             colorScheme: lightColorScheme,
-            dialogTheme: dialogTheme,
+            dialogTheme: dialogTheme.copyWith(
+              titleTextStyle: lightTextTheme.headlineMedium!.copyWith(
+                color: lightColorScheme.secondary,
+              ),
+            ),
             timePickerTheme: timePickerTheme,
             appBarTheme: appBarThemeLight(lightColorScheme),
             useMaterial3: true,
@@ -84,7 +88,11 @@ class MyApp extends StatelessWidget {
           ).copyWith(
             textTheme: darkTextTheme,
             colorScheme: darkColorScheme,
-            dialogTheme: dialogTheme,
+            dialogTheme: dialogTheme.copyWith(
+              titleTextStyle: darkTextTheme.headlineMedium!.copyWith(
+                color: darkColorScheme.secondary,
+              ),
+            ),
             timePickerTheme: timePickerTheme,
             appBarTheme: appBarThemeDark(darkColorScheme),
             useMaterial3: true,
