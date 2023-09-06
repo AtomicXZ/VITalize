@@ -75,11 +75,14 @@ class MarksPageContent extends StatelessWidget {
               return const SizedBox();
             } else if (state is MarksPageLoading) {
               return const CenterWidgetInColumn(
-                  child: CircularProgressIndicator());
+                customHeight: 0.6,
+                child: CircularProgressIndicator(),
+              );
             } else if (state is MarksPageError) {
               return _buildErrorWidget(context);
             } else if (state is MarksPageNoData) {
               return CenterWidgetInColumn(
+                customHeight: 0.6,
                 child: Text(
                   'No marks available for this semester.',
                   style: Theme.of(context)
