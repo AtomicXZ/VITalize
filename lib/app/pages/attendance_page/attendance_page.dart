@@ -2,6 +2,7 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:vitalize/app/core/widgets/center_widget_in_column.dart';
 import 'package:vitalize/app/core/widgets/centered_circular_progress_bar.dart';
 import 'package:vitalize/app/pages/attendance_page/cubit/attendance_page_cubit.dart';
 import 'package:vitalize/app/pages/attendance_page/widgets/attendance_card.dart';
@@ -53,12 +54,25 @@ class AttendancePage extends StatelessWidget {
             ),
           );
         } else if (state is AttendancePageNoAttendanceInThisSem) {
-          return Center(
-              child: Text(
-            'No Attendance in current semester yet.',
-            style:
-                Theme.of(context).textTheme.bodyLarge!.copyWith(fontSize: 18),
-          ));
+          return EasyRefresh(
+            onRefresh: () {
+              BlocProvider.of<AttendancePageCubit>(context)
+                  .loadAttendanceFromApi();
+            },
+            child: ListView(
+              children: [
+                CenterWidgetInColumn(
+                  child: Text(
+                    'No Attendance in current semester yet.',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(fontSize: 18),
+                  ),
+                )
+              ],
+            ),
+          );
         } else {
           return const Placeholder();
         }
