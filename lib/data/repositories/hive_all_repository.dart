@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitalize/data/constants.dart';
 import 'package:vitalize/data/models/attendance.dart';
@@ -32,7 +30,7 @@ class HiveAllRepository {
           return true;
         }
       }
-    } on SocketException {
+    } on Exception {
       // ignore for now and just move on, data will be fetched again if no data is available
     }
     return false;
