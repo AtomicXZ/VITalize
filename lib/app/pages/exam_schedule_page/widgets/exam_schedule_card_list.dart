@@ -14,9 +14,8 @@ class ExamScheduleCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    var sortedEntries = subjects.entries.toList();
-    try {
-      sortedEntries.sort((a, b) {
+    var sortedEntries = subjects.entries.toList()
+      ..sort((a, b) {
         // Parse the date and time strings
         DateTime dateA = DateFormat('dd-MMM-yyyy hh:mm a')
             .parse(a.value['date'] + ' ' + a.value['duration'].split(' - ')[0]);
@@ -24,10 +23,6 @@ class ExamScheduleCardList extends StatelessWidget {
             .parse(b.value['date'] + ' ' + b.value['duration'].split(' - ')[0]);
         return dateA.compareTo(dateB);
       });
-    } catch (e) {
-      BlocProvider.of<ExamScheduleCubit>(context).emitExamScheduleNoData();
-    }
-
     Map sortedSubjects = Map.fromEntries(sortedEntries);
 
     return EasyRefresh(
