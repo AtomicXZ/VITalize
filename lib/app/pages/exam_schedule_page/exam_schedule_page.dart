@@ -29,9 +29,12 @@ class ExamSchedulePage extends StatelessWidget {
         return const CenteredCircularProgressBar();
       } else if (state is ExamScheduleNoData) {
         return EasyRefresh(
-          onRefresh: () {
-            BlocProvider.of<ExamScheduleCubit>(context)
+          onRefresh: () async {
+            await BlocProvider.of<ExamScheduleCubit>(context)
                 .getExamScheduleFromApi();
+            return BlocProvider.of<ExamScheduleCubit>(context).responseStatus
+                ? IndicatorResult.success
+                : IndicatorResult.fail;
           },
           child: ListView(
             children: [

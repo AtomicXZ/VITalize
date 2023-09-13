@@ -22,6 +22,13 @@ class AttendancePageProvider extends StatelessWidget {
 class AttendancePage extends StatelessWidget {
   const AttendancePage({super.key});
 
+  Future<IndicatorResult> _onRefresh(BuildContext context) async {
+    await BlocProvider.of<AttendancePageCubit>(context).loadAttendanceFromApi();
+    return BlocProvider.of<AttendancePageCubit>(context).responseStatus
+        ? IndicatorResult.success
+        : IndicatorResult.fail;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AttendancePageCubit, AttendancePageState>(
@@ -31,9 +38,8 @@ class AttendancePage extends StatelessWidget {
         } else if (state is AttendancePageLoaded) {
           return AnimationLimiter(
             child: EasyRefresh(
-              onRefresh: () {
-                BlocProvider.of<AttendancePageCubit>(context)
-                    .loadAttendanceFromApi();
+              onRefresh: () async {
+                return await _onRefresh(context);
               },
               child: ListView.builder(
                 itemCount: state.attendance.length,
@@ -55,9 +61,8 @@ class AttendancePage extends StatelessWidget {
           );
         } else if (state is AttendancePageNoAttendanceInThisSem) {
           return EasyRefresh(
-            onRefresh: () {
-              BlocProvider.of<AttendancePageCubit>(context)
-                  .loadAttendanceFromApi();
+            onRefresh: () async {
+              return await _onRefresh(context);
             },
             child: ListView(
               children: [

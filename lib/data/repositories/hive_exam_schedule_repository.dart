@@ -1,26 +1,27 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:vitalize/data/constants.dart';
+import 'package:vitalize/data/models/response.dart';
 import 'package:vitalize/data/repositories/api_repository.dart';
 import 'package:vitalize/data/utils/hive_box_utils.dart';
 
 class HiveExamScheduleRepository {
   APIRepository apiRepository = APIRepository();
 
-  Future<Map> get getExamScheduleFromApiAndCache async {
+  Future<Response<Map>> get getExamScheduleFromApiAndCache async {
     Box box = Hive.box(examScheduleBoxName);
 
     if (await serverAvailable) {
       Map examSchedule = await apiRepository.getExamSchedule;
       if (examSchedule.isNotEmpty) {
         box.putAll(examSchedule);
-        return examSchedule;
+        return Response(examSchedule, ResponseStatus.success);
       }
     }
     Map examSchedule = box.toMap();
-    return examSchedule;
+    return Response(examSchedule, ResponseStatus.failure);
   }
 
-  Future<Map> get getExamScheduleFromBox async {
+  Future<Response<Map>> get getExamScheduleFromBox async {
     Box examScheduleBox = Hive.box(examScheduleBoxName);
     Box<String> userBox = Hive.box(userBoxName);
     String day = DateTime.now().day.toString();
@@ -32,6 +33,6 @@ class HiveExamScheduleRepository {
       return getExamScheduleFromApiAndCache;
     }
 
-    return examScheduleBox.toMap();
+    return Response(examScheduleBox.toMap(), ResponseStatus.fromBox);
   }
 }

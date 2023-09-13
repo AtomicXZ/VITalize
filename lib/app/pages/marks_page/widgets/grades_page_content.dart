@@ -13,8 +13,11 @@ class GradesPageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return EasyRefresh(
-      onRefresh: () {
-        BlocProvider.of<GradesPageCubit>(context).getGradesFromApi();
+      onRefresh: () async {
+        await BlocProvider.of<GradesPageCubit>(context).getGradesFromApi();
+        return BlocProvider.of<GradesPageCubit>(context).responseStatus
+            ? IndicatorResult.success
+            : IndicatorResult.fail;
       },
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 8),

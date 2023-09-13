@@ -26,8 +26,12 @@ class ExamScheduleCardList extends StatelessWidget {
     Map sortedSubjects = Map.fromEntries(sortedEntries);
 
     return EasyRefresh(
-      onRefresh: () {
-        BlocProvider.of<ExamScheduleCubit>(context).getExamScheduleFromApi();
+      onRefresh: () async {
+        await BlocProvider.of<ExamScheduleCubit>(context)
+            .getExamScheduleFromApi();
+        return BlocProvider.of<ExamScheduleCubit>(context).responseStatus
+            ? IndicatorResult.success
+            : IndicatorResult.fail;
       },
       child: ListView.builder(
           itemCount: sortedSubjects.length,
