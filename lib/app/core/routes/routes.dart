@@ -64,7 +64,7 @@ final routes = GoRouter(
           Attendance attendance = state.extra as Attendance;
           return ScaffoldWithAppbar(
             page: attendanceDetailPageConfig,
-            title: 'Attendance Detail',
+            title: attendance.name,
             child: AttendanceDetailPage(attendance: attendance),
           );
         }),
