@@ -23,13 +23,14 @@ class AttendanceAdapter extends TypeAdapter<Attendance> {
       totalClasses: fields[3] as String,
       attendedClasses: fields[4] as String,
       attendancePercentage: fields[5] as String,
+      attendanceDetail: (fields[6] as Map).cast<dynamic, dynamic>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Attendance obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class AttendanceAdapter extends TypeAdapter<Attendance> {
       ..writeByte(4)
       ..write(obj.attendedClasses)
       ..writeByte(5)
-      ..write(obj.attendancePercentage);
+      ..write(obj.attendancePercentage)
+      ..writeByte(6)
+      ..write(obj.attendanceDetail);
   }
 
   @override

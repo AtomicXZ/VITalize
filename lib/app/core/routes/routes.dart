@@ -4,6 +4,8 @@ import 'package:vitalize/app/core/routes/go_route_config.dart';
 import 'package:vitalize/app/core/utils/hive_user_box_utils.dart';
 import 'package:vitalize/app/core/widgets/scaffold_with_appbar.dart';
 import 'package:vitalize/app/core/widgets/scaffold_with_navbar.dart';
+import 'package:vitalize/app/pages/attendance_page/sub_page/attendance_detail_page.dart';
+import 'package:vitalize/data/models/attendance.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -56,6 +58,17 @@ final routes = GoRouter(
       ],
     ),
     GoRoute(
+        name: attendanceDetailPageConfig.name,
+        path: '$_root/${attendanceDetailPageConfig.name}',
+        builder: (context, state) {
+          Attendance attendance = state.extra as Attendance;
+          return ScaffoldWithAppbar(
+            page: attendanceDetailPageConfig,
+            title: 'Attendance Detail',
+            child: AttendanceDetailPage(attendance: attendance),
+          );
+        }),
+    GoRoute(
       name: examSchedulePageConfig.name,
       path: '$_root/${examSchedulePageConfig.name}',
       builder: (context, state) => ScaffoldWithAppbar(
@@ -82,7 +95,7 @@ final routes = GoRouter(
     GoRoute(
       name: loginPageConfig.name,
       path: '$_root/${loginPageConfig.name}',
-      builder: (context, state) => loginPageConfig.child,
+      builder: (context, state) => loginPageConfig.child!,
     ),
   ],
 );

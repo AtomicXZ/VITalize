@@ -15,15 +15,15 @@ import '../../pages/settings_page/settings_page.dart';
 class GoRouterConfig {
   final IconData? icon;
   final IconData? selectedIcon;
+  final Widget? child;
   final String name;
-  final Widget child;
 
   GoRouterConfig({
     required this.name,
     this.icon,
     this.selectedIcon,
-    Widget? child,
-  }) : child = child ?? const Placeholder();
+    this.child,
+  });
 }
 
 final List<GoRouterConfig> allNavBarConfigs = [
@@ -48,6 +48,9 @@ final attendancePageConfig = GoRouterConfig(
   selectedIcon: FluentIcons.bookmark_24_filled,
   name: 'Attendance',
   child: const AttendancePageProvider(),
+);
+final attendanceDetailPageConfig = GoRouterConfig(
+  name: 'AttendanceDetail',
 );
 final marksPageConfig = GoRouterConfig(
   icon: FluentIcons.number_symbol_24_regular,

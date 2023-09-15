@@ -16,24 +16,26 @@ class Attendance extends HiveObject {
   final String attendedClasses;
   @HiveField(5)
   final String attendancePercentage;
+  @HiveField(6)
+  final Map attendanceDetail;
 
-  Attendance({
-    required this.name,
-    required this.type,
-    required this.slot,
-    required this.totalClasses,
-    required this.attendedClasses,
-    required this.attendancePercentage,
-  });
+  Attendance(
+      {required this.name,
+      required this.type,
+      required this.slot,
+      required this.totalClasses,
+      required this.attendedClasses,
+      required this.attendancePercentage,
+      required this.attendanceDetail});
 
   factory Attendance.fromMap(Map<String, dynamic> map) {
     return Attendance(
-      name: map['name'],
-      type: map['courseType'],
-      slot: map['slot'],
-      totalClasses: map['totalClasses'],
-      attendedClasses: map['attendedClasses'],
-      attendancePercentage: map['attendancePercentage'],
-    );
+        name: map['name'],
+        type: map['courseType'],
+        slot: map['slot'],
+        totalClasses: map['totalClasses'],
+        attendedClasses: map['attendedClasses'],
+        attendancePercentage: map['attendancePercentage'],
+        attendanceDetail: map['attendanceDetail']);
   }
 }

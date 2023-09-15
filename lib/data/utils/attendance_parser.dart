@@ -5,7 +5,7 @@ Map<String, Attendance> parseAttendance(List<dynamic> data) {
 
   for (var entry in data) {
     String slot = entry['slot'] as String;
-    attendance[slot] = Attendance.fromMap(Map<String, String>.from(entry));
+    attendance[slot] = Attendance.fromMap(Map<String, dynamic>.from(entry));
   }
   return attendance;
 }
