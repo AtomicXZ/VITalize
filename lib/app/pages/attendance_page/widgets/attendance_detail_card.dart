@@ -63,7 +63,8 @@ class AttendanceDetailCard extends StatelessWidget {
                   attendanceData['status'].toString(),
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontSize: 14,
-                      color: _getStatusColor(attendanceData['status'])),
+                      color:
+                          _getStatusColor(attendanceData['status'], context)),
                 ),
               ],
             ),
@@ -73,12 +74,12 @@ class AttendanceDetailCard extends StatelessWidget {
     );
   }
 
-  Color _getStatusColor(String status) {
+  Color _getStatusColor(String status, BuildContext context) {
     switch (status) {
       case 'Present':
-        return Colors.green;
+        return Theme.of(context).colorScheme.primary;
       case 'Absent':
-        return Colors.red;
+        return Theme.of(context).colorScheme.error;
       default:
         return Colors.grey;
     }
