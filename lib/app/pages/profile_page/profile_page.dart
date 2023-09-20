@@ -12,7 +12,12 @@ List<String> fields = [
   'Application Number',
   'Program',
   'Branch',
-  'School'
+  'School',
+  'Mentor Name',
+  'Mentor Cabin',
+  'Mentor Email',
+  'Mentor intercom',
+  'Mentor Mobile Number'
 ];
 
 class ProfilePageProvider extends StatelessWidget {
@@ -52,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                 for (var field in fields)
                   _buildListItem(
                     field,
-                    state.profile[field]!,
+                    state.profile[field] ?? '',
                     Theme.of(context).colorScheme.secondary,
                   ),
               ],
@@ -78,7 +83,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 4),
-          Text(
+          SelectableText(
             value,
             style: const TextStyle(
               fontSize: 18,
