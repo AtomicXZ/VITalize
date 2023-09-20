@@ -44,9 +44,9 @@ class MarksPageContent extends StatelessWidget {
                   ),
                   iconStyleData: IconStyleData(
                     icon: const Icon(
-                      Icons.arrow_forward_ios_outlined,
+                      Icons.arrow_drop_down_rounded,
                     ),
-                    iconSize: 14,
+                    iconSize: 24,
                     iconEnabledColor: colorScheme.primary,
                   ),
                   dropdownStyleData: DropdownStyleData(

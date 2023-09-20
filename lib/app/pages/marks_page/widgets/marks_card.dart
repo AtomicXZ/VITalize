@@ -15,36 +15,41 @@ class MarksCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              subject.name,
-              style: const TextStyle().copyWith(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.secondary,
-              ),
+        child: Theme(
+          data: ThemeData().copyWith(dividerColor: Colors.transparent),
+          child: ExpansionTile(
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  subject.name,
+                  style: const TextStyle().copyWith(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.secondary,
+                  ),
+                ),
+                _gap(),
+                Text(
+                  '${subject.type} - ${subject.slot}',
+                  style: theme.textTheme.bodySmall,
+                ),
+                Text(
+                  subject.professor,
+                  style: theme.textTheme.bodySmall,
+                ),
+              ],
             ),
-            _gap(),
-            Text(
-              '${subject.type} - ${subject.slot}',
-              style: theme.textTheme.bodySmall,
-            ),
-            Text(
-              subject.professor,
-              style: theme.textTheme.bodySmall,
-            ),
-            _gap(),
-            const Divider(),
-            for (var entry in subject.marks.entries)
-              ListTile(
-                title: Text(entry.key, style: theme.textTheme.bodyMedium),
-                trailing: Text(
-                    '${entry.value['scoredMarks']!}/${entry.value['maxMarks']!} - ${entry.value['scoredWeightageMarks']!}/${entry.value['maxWeightageMarks']!}',
-                    style: theme.textTheme.bodyMedium),
-              ),
-          ],
+            children: [
+              for (var entry in subject.marks.entries)
+                ListTile(
+                  title: Text(entry.key, style: theme.textTheme.bodyMedium),
+                  trailing: Text(
+                      '${entry.value['scoredMarks']!}/${entry.value['maxMarks']!} - ${entry.value['scoredWeightageMarks']!}/${entry.value['maxWeightageMarks']!}',
+                      style: theme.textTheme.bodyMedium),
+                ),
+            ],
+          ),
         ),
       ),
     );
