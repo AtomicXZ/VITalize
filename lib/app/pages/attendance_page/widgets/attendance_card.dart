@@ -37,38 +37,35 @@ class AttendanceCard extends StatelessWidget {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${attendance.type} - ${attendance.slot}',
-                        style: theme.textTheme.bodyMedium,
-                      ),
-                      Text(
-                        'Total Classes: ${attendance.totalClasses}',
-                        style: theme.textTheme.bodySmall,
-                      ),
-                      Text(
-                        'Attended Classes: ${attendance.attendedClasses}',
-                        style: theme.textTheme.bodySmall,
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${attendance.type} - ${attendance.slot}',
+                          style: theme.textTheme.bodySmall,
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          'Total Classes: ${attendance.totalClasses}\nAttended Classes: ${attendance.attendedClasses}',
+                          style: theme.textTheme.bodySmall!
+                              .copyWith(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
                   const Spacer(),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      CircularPercentIndicator(
-                        radius: 22,
-                        progressColor: theme.colorScheme.primary,
-                        percent:
-                            double.parse(attendance.attendancePercentage) / 100,
-                        center: Text(
-                          '${attendance.attendancePercentage}%',
-                          style: const TextStyle().copyWith(fontSize: 12),
-                        ),
-                      )
-                    ],
+                  CircularPercentIndicator(
+                    radius: 25,
+                    progressColor: theme.colorScheme.primary,
+                    percent:
+                        double.parse(attendance.attendancePercentage) / 100,
+                    center: Text(
+                      '${attendance.attendancePercentage}%',
+                      style: const TextStyle().copyWith(fontSize: 12),
+                    ),
                   ),
                   const SizedBox(width: 8)
                 ],
