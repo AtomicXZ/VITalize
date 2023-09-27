@@ -79,9 +79,6 @@ class MyApp extends StatelessWidget {
               lightColorScheme,
             ),
             extensions: [lightCustomColor],
-            dividerTheme: DividerThemeData(
-              color: ThemeData.light().dividerColor,
-            ),
           ),
           darkTheme: ThemeData.from(
             colorScheme: darkColorScheme,
@@ -117,9 +114,6 @@ class MyApp extends StatelessWidget {
               darkColorScheme,
             ),
             extensions: [darkCustomColor],
-            dividerTheme: DividerThemeData(
-              color: ThemeData.dark().dividerColor,
-            ),
           ),
           title: 'VITalize',
           routerConfig: routes,

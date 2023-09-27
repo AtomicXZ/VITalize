@@ -8,6 +8,7 @@ import 'package:vitalize/my_app.dart';
 import 'package:vitalize/app/core/utils/http_override.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   registerAllAdapters();
   await openAllBoxes();

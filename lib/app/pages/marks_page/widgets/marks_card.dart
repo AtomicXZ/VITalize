@@ -18,6 +18,7 @@ class MarksCard extends StatelessWidget {
         child: Theme(
           data: ThemeData().copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
+            collapsedIconColor: theme.colorScheme.secondary,
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -29,7 +30,7 @@ class MarksCard extends StatelessWidget {
                     color: theme.colorScheme.secondary,
                   ),
                 ),
-                _gap(),
+                const SizedBox(height: 8),
                 Text(
                   '${subject.type} - ${subject.slot}',
                   style: theme.textTheme.bodySmall,
@@ -48,6 +49,16 @@ class MarksCard extends StatelessWidget {
                       '${entry.value['scoredMarks']!}/${entry.value['maxMarks']!} - ${entry.value['scoredWeightageMarks']!}/${entry.value['maxWeightageMarks']!}',
                       style: theme.textTheme.bodyMedium),
                 ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Divider(
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+              ListTile(
+                title: Text('Total', style: theme.textTheme.bodyMedium),
+                trailing: Text(_getTotal, style: theme.textTheme.bodyMedium),
+              ),
             ],
           ),
         ),
@@ -55,5 +66,15 @@ class MarksCard extends StatelessWidget {
     );
   }
 
-  Widget _gap() => const SizedBox(height: 8);
+  String get _getTotal {
+    double sumScored = 0;
+    double sumTotal = 0;
+
+    for (var entry in subject.marks.entries) {
+      sumScored += double.parse(entry.value['scoredWeightageMarks']!);
+      sumTotal += double.parse(entry.value['maxWeightageMarks']!);
+    }
+
+    return '$sumScored / $sumTotal';
+  }
 }
