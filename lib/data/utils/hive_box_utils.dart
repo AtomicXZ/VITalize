@@ -29,8 +29,11 @@ Map<dynamic, String> get getCreds {
   return {'username': userMap['username']!, 'password': userMap['password']!};
 }
 
-Future<void> openAllBoxes() async {
+Future<void> openUserBox() async {
   await Hive.openBox<String>(userBoxName);
+}
+
+Future<void> openAllBoxesExceptUser() async {
   await Hive.openBox<String>(profileBoxName);
   await Hive.openBox<Periods>(timetableBoxName);
   await Hive.openBox<Attendance>(attendanceBoxName);
@@ -39,10 +42,24 @@ Future<void> openAllBoxes() async {
   await Hive.openBox(examScheduleBoxName);
 }
 
+Future<void> openAllBoxes() async {
+  await openUserBox();
+  await openAllBoxesExceptUser();
+}
+
 void registerAllAdapters() {
   Hive.registerAdapter(PeriodAdapter());
   Hive.registerAdapter(PeriodsAdapter());
   Hive.registerAdapter(AttendanceAdapter());
+}
+
+void deleteAllBoxesExceptUser() {
+  Hive.deleteBoxFromDisk(profileBoxName);
+  Hive.deleteBoxFromDisk(timetableBoxName);
+  Hive.deleteBoxFromDisk(attendanceBoxName);
+  Hive.deleteBoxFromDisk(semIDsBoxName);
+  Hive.deleteBoxFromDisk(gradesBoxName);
+  Hive.deleteBoxFromDisk(examScheduleBoxName);
 }
 
 Future<void> emptyAllBoxesExceptUser() async {
