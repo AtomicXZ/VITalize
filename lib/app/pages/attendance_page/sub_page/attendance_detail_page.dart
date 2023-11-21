@@ -29,7 +29,8 @@ class AttendanceDetailPage extends StatelessWidget {
   Widget _getChildForList(int index) {
     if (index == -1) return AttendanceDetailSummaryCard(attendance: attendance);
     return AttendanceDetailCard(
-      attendanceDetail: attendance.attendanceDetail.entries.elementAt(index),
+      attendanceDetail: attendance.attendanceDetail.entries
+          .elementAt(attendance.attendanceDetail.length - index - 1),
     );
   }
 }
