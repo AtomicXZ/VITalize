@@ -12,6 +12,7 @@ import 'package:vitalize/data/utils/marks_parser.dart';
 import 'package:vitalize/data/utils/profile_parser.dart';
 import 'package:vitalize/data/utils/sem_id_parser.dart';
 import 'package:vitalize/data/utils/timetable_parser.dart';
+import 'package:vitalize/data/models/response.dart';
 
 class APIRepository {
   Future<Map<String, Periods>> get getTimetable async {
@@ -42,17 +43,17 @@ class APIRepository {
     return {};
   }
 
-  Future<Map<String, Attendance>> get getAttendance async {
+  Future<Response<Map<String, Attendance>>> get getAttendance async {
     try {
       final http.Response resp =
           await http.post(Uri.parse(attendanceURL), body: getCreds);
       if (resp.statusCode == 200) {
-        return parseAttendance(jsonDecode(resp.body));
+        return Response.bool(parseAttendance(jsonDecode(resp.body)), true);
       }
     } on Exception {
       // return empty dict
     }
-    return {};
+    return Response.bool({}, false);
   }
 
   Future<Map<String, String>> get getSemIDs async {
@@ -99,25 +100,25 @@ class APIRepository {
     return {};
   }
 
-  Future<Map> get getExamSchedule async {
+  Future<Response<Map>> get getExamSchedule async {
     try {
       final http.Response resp = await http
           .post(Uri.parse(examScheduleURL), body: getCreds)
           .timeout(const Duration(seconds: 3));
       if (resp.statusCode == 200) {
-        return jsonDecode(resp.body);
+        return Response.bool(jsonDecode(resp.body), true);
       }
     } on Exception {
       // return empty dict
     }
-    return {};
+    return Response.bool({}, false);
   }
 
   Future<Map<String, Map<String, dynamic>>> get getAll async {
     try {
       final http.Response resp = await http
           .post(Uri.parse(allURL), body: getCreds)
-          .timeout(const Duration(seconds: 3));
+          .timeout(const Duration(seconds: 5));
 
       var body = jsonDecode(resp.body);
 

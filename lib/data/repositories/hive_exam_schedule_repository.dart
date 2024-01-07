@@ -11,10 +11,10 @@ class HiveExamScheduleRepository {
     Box box = Hive.box(examScheduleBoxName);
 
     if (await serverAvailable) {
-      Map examSchedule = await apiRepository.getExamSchedule;
-      if (examSchedule.isNotEmpty) {
-        box.putAll(examSchedule);
-        return Response(examSchedule, ResponseStatus.success);
+      Response<Map> examSchedule = await apiRepository.getExamSchedule;
+      if (Response.responseStatus(examSchedule.status)) {
+        box.putAll(examSchedule.response);
+        return Response(examSchedule.response, ResponseStatus.success);
       }
     }
     Map examSchedule = box.toMap();

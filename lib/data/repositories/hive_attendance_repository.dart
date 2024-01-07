@@ -14,11 +14,12 @@ class HiveAttendanceRepository {
     Box<Attendance> box = Hive.box<Attendance>(attendanceBoxName);
 
     if (await serverAvailable) {
-      Map<String, Attendance> attendance = await apiRepository.getAttendance;
-      if (attendance.isNotEmpty) {
-        box.putAll(attendance);
+      Response<Map<String, Attendance>> attendance =
+          await apiRepository.getAttendance;
+      if (Response.responseStatus(attendance.status)) {
+        box.putAll(attendance.response);
         return Response<Map<String, Attendance>>(
-            attendance, ResponseStatus.success);
+            attendance.response, ResponseStatus.success);
       }
     }
     Map<dynamic, Attendance> attendance = box.toMap();

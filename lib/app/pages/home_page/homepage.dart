@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           SizedBox(
-            height: 126,
+            height: 136,
             child:
                 BlocBuilder<HomePageNextPeriodCubit, HomePageNextPeriodState>(
                     builder: (context, state) {
