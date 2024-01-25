@@ -58,9 +58,8 @@ class APIRepository {
 
   Future<Map<String, String>> get getSemIDs async {
     try {
-      final http.Response resp = await http
-          .post(Uri.parse(semIDsURL), body: getCreds)
-          .timeout(const Duration(seconds: 3));
+      final http.Response resp =
+          await http.post(Uri.parse(semIDsURL), body: getCreds);
       if (resp.statusCode == 200) {
         return parseSemID(jsonDecode(resp.body));
       }
@@ -74,9 +73,8 @@ class APIRepository {
     Map<dynamic, String> body = getCreds;
     body['semID'] = semID;
     try {
-      final http.Response resp = await http
-          .post(Uri.parse(marksURL), body: body)
-          .timeout(const Duration(seconds: 3));
+      final http.Response resp =
+          await http.post(Uri.parse(marksURL), body: body);
       if (resp.statusCode == 200) {
         return parseMarks(jsonDecode(resp.body));
       }
@@ -88,9 +86,8 @@ class APIRepository {
 
   Future<Map> get getGrades async {
     try {
-      final http.Response resp = await http
-          .post(Uri.parse(gradesURL), body: getCreds)
-          .timeout(const Duration(seconds: 3));
+      final http.Response resp =
+          await http.post(Uri.parse(gradesURL), body: getCreds);
       if (resp.statusCode == 200) {
         return jsonDecode(resp.body);
       }
@@ -102,9 +99,8 @@ class APIRepository {
 
   Future<Response<Map>> get getExamSchedule async {
     try {
-      final http.Response resp = await http
-          .post(Uri.parse(examScheduleURL), body: getCreds)
-          .timeout(const Duration(seconds: 3));
+      final http.Response resp =
+          await http.post(Uri.parse(examScheduleURL), body: getCreds);
       if (resp.statusCode == 200) {
         return Response.bool(jsonDecode(resp.body), true);
       }
@@ -116,9 +112,8 @@ class APIRepository {
 
   Future<Map<String, Map<String, dynamic>>> get getAll async {
     try {
-      final http.Response resp = await http
-          .post(Uri.parse(allURL), body: getCreds)
-          .timeout(const Duration(seconds: 5));
+      final http.Response resp =
+          await http.post(Uri.parse(allURL), body: getCreds);
 
       var body = jsonDecode(resp.body);
 
