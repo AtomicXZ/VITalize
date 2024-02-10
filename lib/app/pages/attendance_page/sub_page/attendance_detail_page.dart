@@ -6,8 +6,12 @@ import 'package:vitalize/data/models/attendance.dart';
 
 class AttendanceDetailPage extends StatelessWidget {
   final Attendance attendance;
+  final Map attendanceDetail;
 
-  const AttendanceDetailPage({super.key, required this.attendance});
+  AttendanceDetailPage({super.key, required this.attendance})
+      : attendanceDetail = Map.fromEntries(attendance.attendanceDetail.entries
+            .toList()
+          ..sort((e1, e2) => int.parse(e1.key).compareTo(int.parse(e2.key))));
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class AttendanceDetailPage extends StatelessWidget {
   Widget _getChildForList(int index) {
     if (index == -1) return AttendanceDetailSummaryCard(attendance: attendance);
     return AttendanceDetailCard(
-      attendanceDetail: attendance.attendanceDetail.entries.elementAt(index),
+      attendanceDetail: attendanceDetail.entries.elementAt(index),
     );
   }
 }
