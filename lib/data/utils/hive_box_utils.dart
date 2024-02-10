@@ -53,13 +53,13 @@ void registerAllAdapters() {
   Hive.registerAdapter(AttendanceAdapter());
 }
 
-void deleteAllBoxesExceptUser() {
-  Hive.deleteBoxFromDisk(profileBoxName);
-  Hive.deleteBoxFromDisk(timetableBoxName);
-  Hive.deleteBoxFromDisk(attendanceBoxName);
-  Hive.deleteBoxFromDisk(semIDsBoxName);
-  Hive.deleteBoxFromDisk(gradesBoxName);
-  Hive.deleteBoxFromDisk(examScheduleBoxName);
+Future<void> deleteAllBoxesExceptUser() async {
+  await Hive.deleteBoxFromDisk(profileBoxName);
+  await Hive.deleteBoxFromDisk(timetableBoxName);
+  await Hive.deleteBoxFromDisk(attendanceBoxName);
+  await Hive.deleteBoxFromDisk(semIDsBoxName);
+  await Hive.deleteBoxFromDisk(gradesBoxName);
+  await Hive.deleteBoxFromDisk(examScheduleBoxName);
 }
 
 Future<void> emptyAllBoxesExceptUser() async {
