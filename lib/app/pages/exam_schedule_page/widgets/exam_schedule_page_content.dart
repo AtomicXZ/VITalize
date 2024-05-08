@@ -11,6 +11,7 @@ class ExamSchedulePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: examSchedule.length,
+      initialIndex: examSchedule.length - 1,
       child: Column(
         children: [
           TabBar(
