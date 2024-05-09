@@ -17,6 +17,8 @@ class ExamScheduleCubit extends Cubit<ExamScheduleState> {
         examSchedule.values.last.values.first['date'] == '-') {
       emit(ExamScheduleNoData());
     } else {
+      examSchedule.forEach((key, value) =>
+          (value as Map).removeWhere((key, value) => value['date'] == ('-')));
       emit(ExamScheduleLoaded(examSchedule));
     }
   }
